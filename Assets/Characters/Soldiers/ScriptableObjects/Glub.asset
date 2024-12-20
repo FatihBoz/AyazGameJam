@@ -19,5 +19,5 @@ MonoBehaviour:
   range: 5
   moveSpeed: 5
   attackRange: 9
-  detectionRange: 5
+  detectionRange: 20
   maxHp: 89

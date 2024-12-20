@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8439603511183194483}
   - component: {fileID: 1214783086595521215}
   - component: {fileID: 9063872969447607194}
+  - component: {fileID: 822393835678740253}
   m_Layer: 0
   m_Name: Castle Player
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658965042788416280}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &822393835678740253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658965042788416280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c4bdfb48659544b83e8eecf2c6520a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: 100
+  currentMinerCount: 0
 --- !u!1 &4004711093992008586
 GameObject:
   m_ObjectHideFlags: 0

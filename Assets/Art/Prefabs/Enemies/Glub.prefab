@@ -645,7 +645,8 @@ GameObject:
   - component: {fileID: 5959364119595114050}
   - component: {fileID: 4087656248264908978}
   - component: {fileID: 2022920803570501838}
-  m_Layer: 0
+  - component: {fileID: 3540400599989434465}
+  m_Layer: 7
   m_Name: Glub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,11 +722,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  agent: {fileID: 0}
-  targetTower: {fileID: 0}
+  agent: {fileID: 3540400599989434465}
+  targetTower: {fileID: 658965042788416280, guid: bab88a55bbb4d4b408de7feb85a8e822,
+    type: 3}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
 --- !u!136 &4087656248264908978
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -776,6 +778,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!195 &3540400599989434465
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641672811232777236}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6427312536750953187
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,11 @@ using UnityEngine.AI;
 public class SoldierCombat : Soldier
 {
     public NavMeshAgent agent;
-    public Transform targetTower;
+    //public GameObject targetTower;
     public LayerMask enemyLayer;
     private Transform currentEnemyTarget;
+    private Vector3 currentEnemyLocation;
+
 
     private float currentHp;
     private ISoldierAnimation anim;
@@ -20,10 +22,12 @@ public class SoldierCombat : Soldier
 
     void Start()
     {
+        /*
         if (targetTower != null)
         {
-            MoveToPos(targetTower.position);
+            MoveToPos(targetTower.transform.position);
         }
+        */
     }
 
     void Update()
@@ -39,13 +43,14 @@ public class SoldierCombat : Soldier
         {
             // Yakýndaki düþmanlarý kontrol et
             CheckForEnemies();
-
+            /*
             if (targetTower != null)
             {
                 // Hedef kuleye doðru hareket etmeye devam et
                 agent.isStopped = false;
-                MoveToPos(targetTower.position);
+                MoveToPos(targetTower.transform.position);
             }
+            */
         }
     }
 
@@ -88,6 +93,7 @@ public class SoldierCombat : Soldier
             // En yakýn düþmaný hedefle
             Transform closestEnemy = FindClosestEnemy(enemiesInRange);
             SetEnemyTarget(closestEnemy);
+            agent.SetDestination(currentEnemyLocation);
         }
         else
         {

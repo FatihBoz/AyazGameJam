@@ -6,7 +6,12 @@ using UnityEngine.AI;
 public class MineMovement : MonoBehaviour
 {
 
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
 
     public void MoveToMine(Vector3 pos)
     {
