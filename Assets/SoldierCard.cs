@@ -1,20 +1,32 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    [SerializeField] private List<SoldierSO> soldierListCanTransform;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private SoldierAttributes soldierPrefab;
+    [SerializeField] private Soldier soldierPrefab;
 
     private Camera mainCam;
     private bool isPlacing;
     private Vector3 offSet = new(0f,.9f,0f);
     private GameObject placingPrefab;
+    private SoldierSO soldierToTransform;
+
 
 
     private void Awake()
     {
         mainCam = Camera.main;
+        soldierToTransform = GetSoldierToTransform();
+    }
+
+
+    SoldierSO GetSoldierToTransform()
+    {
+        int r = Random.Range(0, soldierListCanTransform.Count);
+        return soldierListCanTransform[r];
     }
 
 
@@ -47,7 +59,8 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void PlaceSoldier()
     {
-        SoldierAttributes soldier = Instantiate(soldierPrefab, placingPrefab.transform.position, Quaternion.identity);
+        Soldier soldier = Instantiate(soldierPrefab, placingPrefab.transform.position, Quaternion.identity);
+        soldier.SetSoldierToTransform(soldierToTransform);
         soldier.RangePrefab.SetActive(false);
         Destroy(placingPrefab);
 

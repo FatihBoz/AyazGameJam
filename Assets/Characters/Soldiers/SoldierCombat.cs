@@ -1,23 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour
+public class SoldierCombat : Soldier
 {
-    public NavMeshAgent agent; // Karakterin hareket sistemi
-    public Transform targetTower; // Hedef kule
-    public float attackRange = 5f; // Düþmana saldýrý mesafesi
-    public LayerMask enemyLayer; // Düþmanlarýn layer'ý
-    public float detectionRadius = 10f; // Düþman algýlama yarýçapý
+    public NavMeshAgent agent;
+    public Transform targetTower;
+    public LayerMask enemyLayer;
+    private Transform currentEnemyTarget;
 
-    private Transform currentEnemyTarget; // Algýlanan düþman
+    private float currentHp;
+
+
+    private void Awake()
+    {
+        currentHp = soldierSO.MaxHp;
+    }
 
     void Start()
     {
         if (targetTower != null)
         {
-            // Kuleye doðru hareket baþlat
             MoveToPos(targetTower.position);
         }
     }
@@ -46,6 +48,26 @@ public class Movement : MonoBehaviour
     }
 
 
+    public void TakeDamage(float damage)
+    {
+        currentHp -= damage;
+        print("current hp:"+currentHp);
+        if (currentHp <= 0 && canRevive)
+        {
+            print("öldü");
+            //Instantiate Revive effect
+            if (soldierToTransform.SoldierPrefab != null)
+            {
+                Soldier soldier = Instantiate(soldierToTransform.SoldierPrefab, transform.position, transform.rotation);
+                soldier.SetCanRevive(false);
+            }
+
+            
+            Destroy(gameObject);
+        }
+    }
+
+
     public void MoveToPos(Vector3 pos)
     {
         // Verilen pozisyona hareket eder
@@ -56,7 +78,7 @@ public class Movement : MonoBehaviour
     private void CheckForEnemies()
     {
         // Algýlama alanýndaki düþmanlarý kontrol et
-        Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, detectionRadius, enemyLayer);
+        Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, soldierSO.DetectionRange, enemyLayer);
 
         if (enemiesInRange.Length > 0)
         {
@@ -109,6 +131,6 @@ public class Movement : MonoBehaviour
     {
         // Algýlama alanýný görselleþtirmek için
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, soldierSO.DetectionRange);
     }
 }

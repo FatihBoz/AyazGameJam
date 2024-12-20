@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8767441913778674568}
   - component: {fileID: 2942875159211657060}
   - component: {fileID: 1998007768703531998}
-  - component: {fileID: 3128279771999973809}
   - component: {fileID: 1315053952778269375}
+  - component: {fileID: 945092173004291334}
   m_Layer: 0
   m_Name: SoldierPrefab
   m_TagString: Untagged
@@ -110,20 +110,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3128279771999973809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244918309072904563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b676827ace869984e8f66eb206d2b352, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 7
-  rangePrefab: {fileID: 6185504133817081418}
 --- !u!54 &1315053952778269375
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,6 +137,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &945092173004291334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244918309072904563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbe0420b73d29242932e8969cf3658c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierSO: {fileID: 11400000, guid: 8c3b8d842d2279b48b4263252cf3244f, type: 2}
+  rangePrefab: {fileID: 6185504133817081418}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  agent: {fileID: 0}
+  targetTower: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &5818548076408086827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,15 +172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangePrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 8117156417120413605, guid: ce6d405f51bc4f3468cbf984c289768f,
+    - target: {fileID: 389827007438307169, guid: ce6d405f51bc4f3468cbf984c289768f,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117156417120413605, guid: ce6d405f51bc4f3468cbf984c289768f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 7
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8117156417120413605, guid: ce6d405f51bc4f3468cbf984c289768f,
         type: 3}

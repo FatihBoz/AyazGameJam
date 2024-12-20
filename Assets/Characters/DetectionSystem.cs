@@ -5,11 +5,11 @@ public class DetectionSystem : MonoBehaviour
     public float detectionRadius = 10f; // Düþman algýlama yarýçapý
     public LayerMask enemyLayer; // Düþmanlarýn bulunduðu layer
 
-    private Movement unitController;
+    private SoldierCombat unitController;
 
     void Start()
     {
-        unitController = GetComponent<Movement>();
+        unitController = GetComponent<SoldierCombat>();
     }
 
     void Update()
