@@ -15,58 +15,64 @@ public class SimpleAI : MonoBehaviour
     //public float enemyAttackPower = 0;
 
     [Header("Prefabs")]
-    public GameObject giant;
-    public GameObject shooterFly;
-    public GameObject meleeFly;
+    //public GameObject giant;
+    //public GameObject shooterFly;
+    //public GameObject meleeFly;
     public GameObject miner;
 
     [Header("Spawn Points")]
     public Transform minerPoint;
     public List<Transform> enemySpawns;
 
-    GameObject[] soldiers;
+    public GameObject[] soldiers;
 
-    private void Awake()
-    {
-        GameObject[] soldiers = { giant, shooterFly, meleeFly };
 
-    }
-
+    private float decisionInterval = 5f; // Karar verme aralýðý (5 saniye)
+    private float lastDecisionTime = 0f; // Son karar zamaný
 
     private void Update()
     {
-        //Saldýrý Altýnda
+        if (Time.time >= lastDecisionTime + decisionInterval)
+        {
+            lastDecisionTime = Time.time; // Karar zamanýný güncelle
+            MakeDecision();
+        }
+    }
+
+    void MakeDecision()
+    {
+        // Saldýrý Altýnda
         if (isUnderAttack)
         {
             if (hasEnoughSource())
             {
-                //Produce Soldier
+                // Produce Soldier
                 ProduceRandomSoldierInRandomPlace();
-
             }
             else
             {
-                //Produce Miner
+                // Produce Miner
                 ProduceMiner();
             }
         }
         else
         {
-            if(hasEnoughMiner())
+            if (hasEnoughMiner())
             {
                 if (hasEnoughSource())
                 {
-                    //Produce Soldier
+                    // Produce Soldier
                     ProduceRandomSoldierInRandomPlace();
                 }
             }
             else
             {
-                //Produce Miner
+                // Produce Miner
                 ProduceMiner();
             }
         }
     }
+
 
     void ProduceRandomSoldierInRandomPlace()
     {
