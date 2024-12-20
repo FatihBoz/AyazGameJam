@@ -182,7 +182,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soldierPrefab
       value: 
-      objectReference: {fileID: 6347737106622278471, guid: 2c2226073e6b061438a10762f813b80e,
+      objectReference: {fileID: 8091710039454601387, guid: 24577b0fc72ceef46aebcbba6d6ebd0a,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -308,6 +308,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6377744628668114659, guid: a43861beb979e9e418d1b26a55f19cf1,
+        type: 3}
+      propertyPath: soldierPrefab
+      value: 
+      objectReference: {fileID: 9033237599909098572, guid: 526b4e44988c97e48a6e8383081fb5d5,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -436,7 +442,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soldierPrefab
       value: 
-      objectReference: {fileID: 5959364119595114050, guid: 2c215dfbebd6e8d49b4f0c8d91929aa6,
+      objectReference: {fileID: 3303875584697748728, guid: 3cd7b06b04b36584abdf553f505b08d7,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

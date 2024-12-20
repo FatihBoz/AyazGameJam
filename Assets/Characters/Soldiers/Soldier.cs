@@ -11,10 +11,14 @@ public abstract class Soldier : MonoBehaviour
     protected bool canRevive = true;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        rangePrefab.transform.localScale = new Vector3(soldierSO.Range, rangePrefab.transform.localScale.y, soldierSO.Range);
-        canRevive = true;
+        if (rangePrefab != null)
+        {
+            rangePrefab.transform.localScale = new Vector3(soldierSO.Range, rangePrefab.transform.localScale.y, soldierSO.Range);
+            canRevive = true;
+        }
+
     }
 
     public void SetCanRevive(bool canRevive)
@@ -30,6 +34,9 @@ public abstract class Soldier : MonoBehaviour
 
     protected void OnMouseDown()
     {
+        if (rangePrefab == null)
+            return;
+
         if (rangeIsActive)
         {
             rangeIsActive = false;

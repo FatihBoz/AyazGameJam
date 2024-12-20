@@ -14,8 +14,9 @@ public class SoldierCombat : Soldier
     private ISoldierAnimation anim;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         currentHp = soldierSO.MaxHp;
         anim = GetComponent<ISoldierAnimation>();   
     }
