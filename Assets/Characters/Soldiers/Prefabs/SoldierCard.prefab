@@ -134,9 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldierListCanTransform:
-  - {fileID: 11400000, guid: 8c3b8d842d2279b48b4263252cf3244f, type: 2}
+  - {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  soldierPrefab: {fileID: 945092173004291334, guid: afc80f353cb11d34693a179595d930d7,
+  soldierPrefab: {fileID: 2335741173342537272, guid: dd61655bf302f1843b68a5852bb073e6,
     type: 3}

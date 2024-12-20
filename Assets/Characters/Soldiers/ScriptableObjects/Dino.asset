@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4e38a8f6d5dec4d92f6cd6d13f38a1, type: 3}
-  m_Name: Tank
+  m_Name: Dino
   m_EditorClassIdentifier: 
-  soldierPrefab: {fileID: 6070837318883518256, guid: 0ae103ce0fd243b45af8f2ac867b0963,
+  soldierPrefab: {fileID: 2335741173342537272, guid: dd61655bf302f1843b68a5852bb073e6,
     type: 3}
-  attackDamage: 10
-  attackSpeed: 10
-  range: 7
-  moveSpeed: 10
-  attackRange: 0
-  detectionRange: 0
-  maxHp: 0
+  attackDamage: 5
+  attackSpeed: 5
+  range: 15
+  moveSpeed: 5
+  attackRange: 6
+  detectionRange: 10
+  maxHp: 300
