@@ -9,11 +9,13 @@ public class SoldierCombat : Soldier
     private Transform currentEnemyTarget;
 
     private float currentHp;
+    private ISoldierAnimation anim;
 
 
     private void Awake()
     {
         currentHp = soldierSO.MaxHp;
+        anim = GetComponent<ISoldierAnimation>();   
     }
 
     void Start()
@@ -50,10 +52,12 @@ public class SoldierCombat : Soldier
 
     public void TakeDamage(float damage)
     {
+        anim.HitReactAnimation();
         currentHp -= damage;
         print("current hp:"+currentHp);
         if (currentHp <= 0 && canRevive)
         {
+            anim.DieAnimation();
             print("öldü");
             //Instantiate Revive effect
             if (soldierToTransform.SoldierPrefab != null)
@@ -70,7 +74,6 @@ public class SoldierCombat : Soldier
 
     public void MoveToPos(Vector3 pos)
     {
-        // Verilen pozisyona hareket eder
         agent.SetDestination(pos);
         //agent.stoppingDistance = 1f; // Hedefe yaklaþýnca dur
     }
@@ -123,14 +126,8 @@ public class SoldierCombat : Soldier
 
     private void Attack()
     {
-        // Saldýrý iþlemi burada tetiklenir
-        Debug.Log($"{gameObject.name} is attacking {currentEnemyTarget.name}!");
-    }
+        anim.AttackAnimation();
 
-    private void OnDrawGizmosSelected()
-    {
-        // Algýlama alanýný görselleþtirmek için
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, soldierSO.DetectionRange);
+        Debug.Log($"{gameObject.name} is attacking {currentEnemyTarget.name}!");
     }
 }
