@@ -44,11 +44,7 @@ public class SoldierCombat : Soldier , ICombat
         InstantiateHealthBar();
         currentHp = soldierSO.MaxHp;
         anim = GetComponent<ISoldierAnimation>();
-        
-    }
 
-    void Start()
-    {
         owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
 
 
@@ -60,8 +56,8 @@ public class SoldierCombat : Soldier , ICombat
             MoveToPos(targetTower.transform.position);
         }
 
-        
     }
+
 
 
     #region UI
@@ -91,28 +87,41 @@ public class SoldierCombat : Soldier , ICombat
             if (soldierSO.Range >= Vector3.Distance(currentTarget.position, gameObject.transform.position))
             {
                 anim.AttackAnimation();
-                agent.isStopped = true;
+                if (agent.isActiveAndEnabled)
+                {
+                    agent.isStopped = true;
+                }
+
 
             }
             else
             {
-                MoveToPos(currentTarget.transform.position);
+                if (agent.isActiveAndEnabled)
+                {
+                    MoveToPos(currentTarget.transform.position);
+                }
+
             }
         }
         else
         {   
             if (targetTower != null)
             {
-                
-                agent.isStopped = false;
-                MoveToPos(targetTower.transform.position);
-                SetEnemyTarget(targetTower.transform);
+                if (agent.isActiveAndEnabled)
+                {
+                    agent.isStopped = false;
+                    MoveToPos(targetTower.transform.position);
+                    SetEnemyTarget(targetTower.transform);
+                }
             }
             
         }
 
-        transform.LookAt(currentTarget);
-        print("current target:"+currentTarget.name);
+        if (currentTarget != null)
+        {
+            transform.LookAt(currentTarget);
+        }
+
 
         healthBarInstance.gameObject.transform.SetPositionAndRotation(transform.position + healthBarOffset, Quaternion.Euler(healthBarXRotationOffSet, 0, 0));
     }
@@ -175,7 +184,10 @@ public class SoldierCombat : Soldier , ICombat
             // En yakýn düþmaný hedefle
             closestTarget = FindClosestEnemy(enemiesInRange);
             SetEnemyTarget(closestTarget);
-            agent.SetDestination(currentTargetLocation);
+            if (agent.isActiveAndEnabled)
+            {
+                agent.SetDestination(currentTargetLocation);
+            }
         }
 
         return closestTarget;

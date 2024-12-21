@@ -54,4 +54,6 @@ public abstract class Soldier : MonoBehaviour
 
     public GameObject RangePrefab => rangePrefab;
 
+    public float SoldierCost => soldierSO.Cost;
+
 }

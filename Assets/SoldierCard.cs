@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -15,7 +16,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool isPlacing;
     private SoldierCombat placingSoldierPrefab;
     private SoldierSO soldierToTransform;
-
+    private bool canPlace = true;
 
 
     private void Awake()
@@ -52,10 +53,12 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (isPlacing) return;
 
-        placingSoldierPrefab = (SoldierCombat)Instantiate(soldierPrefab);
-        placingSoldierPrefab.GetComponent<Collider>().isTrigger = true;
-        placingSoldierPrefab.GetComponent<Animator>().enabled = false;
-        placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);    
+        PreparePlacingPrefab();
+
+        if (placingSoldierPrefab.owner.GetComponent<Lord>().gold < placingSoldierPrefab.SoldierCost)
+        {
+            canPlace = false;
+        }
 
         isPlacing = true;
         Cursor.visible = false; 
@@ -63,17 +66,34 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void PlaceSoldier()
     {
-        SoldierCombat soldier = (SoldierCombat)Instantiate(soldierPrefab, placingSoldierPrefab.transform.position, Quaternion.identity);
+        if (canPlace)
+        {
+            SoldierCombat soldier = (SoldierCombat)Instantiate(soldierPrefab, placingSoldierPrefab.transform.position, Quaternion.identity);
 
-        //COST belirleme
-        //soldier.GetComponent<SoldierCombat>().owner.GetComponent<Lord>().AddGold(-20);
-        //UIUpdater.instance.UpdateSource();
+            soldier.owner.GetComponent<Lord>().AddGold(-soldier.SoldierCost);   
+            UIUpdater.instance.UpdateSource();
 
-        soldier.RangePrefab.SetActive(false);
+            soldier.RangePrefab.SetActive(false);
+        }
+
+
         Destroy(placingSoldierPrefab.gameObject);
 
         isPlacing = false;
         Cursor.visible = true;
+
+        canPlace = true;
+    }
+
+    void PreparePlacingPrefab()
+    {
+        placingSoldierPrefab = (SoldierCombat)Instantiate(soldierPrefab);
+        placingSoldierPrefab.GetComponent<Collider>().enabled = false;
+        Destroy(placingSoldierPrefab.GetComponent<Rigidbody>());
+        placingSoldierPrefab.GetComponent<NavMeshAgent>().enabled = false;
+        placingSoldierPrefab.GetComponent<Animator>().enabled = false;
+        placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);
+
     }
 
 
