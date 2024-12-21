@@ -58,9 +58,9 @@ public class SoldierCombat : Soldier , ICombat
         }
 
 
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
-        audioSource.clip = soldierSO.attackAudioClip;
+        //audioSource.clip = soldierSO.attackAudioClip;
 
     }
 

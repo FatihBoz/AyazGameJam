@@ -45,6 +45,14 @@ public class MinerSoldier : MonoBehaviour, ICombat
         healthBarInstance.gameObject.transform.SetPositionAndRotation(transform.position + healthBarOffset, Quaternion.Euler(healthBarXRotationOffSet, 0, 0));
     }
 
+
+    public void MakeHealthBarActive(bool value)
+    {
+        healthBarInstance.gameObject.SetActive(value);
+        print("health bar is active:" + healthBarInstance.gameObject.activeSelf);
+    }
+
+
     public void InstantiateHealthBar()
     {
         healthBarInstance = Instantiate(healthBarPrefab, transform.position + healthBarOffset, Quaternion.identity).GetComponent<HealthBarUI>();

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Miner : MonoBehaviour, IMiner
+public class Miner : MonoBehaviour
 {
     private bool isInMine = false; // Madende mi?
     private float goldPerSecond = 1f; // Her saniye kazanýlan altýn
@@ -21,6 +21,8 @@ public class Miner : MonoBehaviour, IMiner
     private NavMeshAgent agent;
     private Renderer minerRenderer; // Görünmez yapmak için
 
+    private MinerSoldier minerSoldier;
+
 
     AudioSource audioSource;
 
@@ -28,7 +30,7 @@ public class Miner : MonoBehaviour, IMiner
 
     private void Awake()
     {
-
+        minerSoldier = GetComponent<MinerSoldier>();
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         minerRenderer = GetComponentInChildren<Renderer>();
@@ -86,7 +88,7 @@ public class Miner : MonoBehaviour, IMiner
             agent.isStopped = true; // Hareketi durdur
             minerRenderer.enabled = false; // Görünmez yap
 
-            StartCoroutine(MineGold(other.GetComponent<Mine>()));
+            StartCoroutine(MineGold());
         }
         if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
         {
@@ -96,12 +98,14 @@ public class Miner : MonoBehaviour, IMiner
         }
     }
 
-    private IEnumerator MineGold(Mine mine)
+    private IEnumerator MineGold()
     {
-        audioSource.Play();
-        audioSource.Play();
-
+        //audioSource.Play();
+        //audioSource.Play();
+        minerSoldier.MakeHealthBarActive(false);
+        print("e girdi buraya");
         yield return new WaitForSeconds(mineTime); // Madende bekle
+        minerSoldier.MakeHealthBarActive(true);
         isInMine = false;
         hasGold = true;
         minerRenderer.enabled = true; // Görünür yap

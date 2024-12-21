@@ -1,6 +1,4 @@
 public interface IMiner
 {
-    void MakeHealthBarInactive();
-
-    void MakeHealthBarActive();
+    bool IsInMýne {  get; }
 }

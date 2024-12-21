@@ -41,7 +41,6 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 
 
-
     protected virtual void StartPlacingSoldier()
     {
         if (isPlacing) return;

@@ -29,6 +29,7 @@ public class SoldierCard : MinerCard, IPointerDownHandler, IPointerUpHandler
 
     SoldierSO GetSoldierToTransform()
     {
+
         if (soldierListCanTransform.Count <= 0)
         {
             return null;
@@ -89,6 +90,7 @@ public class SoldierCard : MinerCard, IPointerDownHandler, IPointerUpHandler
 
     protected override void Update()
     {
+
         if (isPlacing && Input.GetMouseButton(0))
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
