@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7872417209158147444}
   - component: {fileID: 4081334350609243746}
   - component: {fileID: 4258784100942129836}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Castle Enemy
   m_TagString: EnemyCastle
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2174338166480810078}
-  m_Mesh: {fileID: -1434594856312860606, guid: 77df4369d8ed8da4086fe31fd24c333f, type: 3}
+  m_Mesh: {fileID: 7383972240540459837, guid: 1c1fe5848ecb7814e8ec3c12d79c078b, type: 3}
 --- !u!23 &7872417209158147444
 MeshRenderer:
   m_ObjectHideFlags: 0

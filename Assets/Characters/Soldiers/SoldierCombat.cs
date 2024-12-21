@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.UI.GridLayoutGroup;
+
 
 public class SoldierCombat : Soldier
 {
@@ -11,8 +11,8 @@ public class SoldierCombat : Soldier
 
     GameObject targetTower;
     public LayerMask enemyLayer;
-    private Transform currentEnemyTarget;
-    private Vector3 currentEnemyLocation;
+    private Transform currentTarget;
+    private Vector3 currentTargetLocation;
 
     public string TargetTagNameOfCastle;
     public string OwnerTagNameOfCastle;
@@ -38,6 +38,7 @@ public class SoldierCombat : Soldier
 
         if (targetTower != null)
         {
+            print("target tower null deðil");
             MoveToPos(targetTower.transform.position);
         }
         
@@ -45,35 +46,45 @@ public class SoldierCombat : Soldier
 
     void Update()
     {
-        if (currentEnemyTarget != null)
+        CheckForEnemies();
+
+        if (currentTarget != null)
         {
             // Düþman saldýrý menzilinde ise saldýr
-            if (soldierSO.AttackRange < Vector3.Distance(currentEnemyTarget.position, gameObject.transform.position))
+            if (soldierSO.Range >= Vector3.Distance(currentTarget.position, gameObject.transform.position))
             {
-                Attack();
+                print("attack anim");
+                anim.AttackAnimation();
                 agent.isStopped = true;
 
             }
             else
             {
-                MoveToPos(currentEnemyTarget.transform.position);
-                transform.LookAt(currentEnemyTarget); // Düþmana bak
+                MoveToPos(currentTarget.transform.position);
             }
-
         }
         else
         {
-            // Yakýndaki düþmanlarý kontrol et
-            CheckForEnemies();
+            
+            if (CheckForEnemies() != null)
+            {
+                return;
+            }
+
+            ClearEnemyTarget();
             
             if (targetTower != null)
             {
-                // Hedef kuleye doðru hareket etmeye devam et
+                
                 agent.isStopped = false;
                 MoveToPos(targetTower.transform.position);
+                SetEnemyTarget(targetTower.transform);
             }
             
         }
+
+        transform.LookAt(currentTarget);
+        print("current target:"+currentTarget.name);
     }
 
 
@@ -105,23 +116,22 @@ public class SoldierCombat : Soldier
         //agent.stoppingDistance = 1f; // Hedefe yaklaþýnca dur
     }
 
-    private void CheckForEnemies()
+    private Transform CheckForEnemies()
     {
-        // Algýlama alanýndaki düþmanlarý kontrol et
         Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, soldierSO.DetectionRange, enemyLayer);
+
+        Transform closestTarget =  null;
 
         if (enemiesInRange.Length > 0)
         {
             // En yakýn düþmaný hedefle
-            Transform closestEnemy = FindClosestEnemy(enemiesInRange);
-            SetEnemyTarget(closestEnemy);
-            agent.SetDestination(currentEnemyLocation);
+            closestTarget = FindClosestEnemy(enemiesInRange);
+            SetEnemyTarget(closestTarget);
+            agent.SetDestination(currentTargetLocation);
         }
-        else
-        {
-            // Düþman yoksa hedefi temizle
-            ClearEnemyTarget();
-        }
+
+        return closestTarget;
+
     }
 
     private Transform FindClosestEnemy(Collider[] enemies)
@@ -144,23 +154,30 @@ public class SoldierCombat : Soldier
 
     public void SetEnemyTarget(Transform enemy)
     {
-        currentEnemyTarget = enemy;
+        currentTarget = enemy;
     }
 
     public void ClearEnemyTarget()
     {
-        currentEnemyTarget = null;
+        currentTarget = null;
     }
 
     private void Attack()
     {
-        anim.AttackAnimation();
 
-        Debug.Log($"{gameObject.name} is attacking {currentEnemyTarget.name}!");
+        print("yapýþtýrdý lavuða:"+currentTarget.name);
+       
     }
 
     public void ChangeMaterial(Material material)
     {
         meshRenderer.material = material;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position, soldierSO.Range);
     }
 }

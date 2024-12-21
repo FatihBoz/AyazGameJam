@@ -961,11 +961,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  rangeIndicatorExpandRate: 0
   owner: {fileID: 0}
   agent: {fileID: 3481911205471117391}
+  meshRenderer: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
   TargetTagNameOfCastle: AllyCastle
   OwnerTagNameOfCastle: EnemyCastle
 --- !u!114 &7118477427199188002
