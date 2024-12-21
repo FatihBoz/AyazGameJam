@@ -182,7 +182,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soldierPrefab
       value: 
-      objectReference: {fileID: 8091710039454601387, guid: 24577b0fc72ceef46aebcbba6d6ebd0a,
+      objectReference: {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -312,7 +312,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soldierPrefab
       value: 
-      objectReference: {fileID: 9033237599909098572, guid: 526b4e44988c97e48a6e8383081fb5d5,
+      objectReference: {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -442,7 +442,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soldierPrefab
       value: 
-      objectReference: {fileID: 3303875584697748728, guid: 3cd7b06b04b36584abdf553f505b08d7,
+      objectReference: {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

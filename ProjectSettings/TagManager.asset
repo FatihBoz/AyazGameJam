@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mine
+  - EnemyCastle
+  - AllyCastle
   layers:
   - Default
   - TransparentFX

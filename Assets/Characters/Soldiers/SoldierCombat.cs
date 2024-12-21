@@ -4,10 +4,12 @@ using UnityEngine.AI;
 public class SoldierCombat : Soldier
 {
     public NavMeshAgent agent;
-    //public GameObject targetTower;
+    GameObject targetTower;
     public LayerMask enemyLayer;
     private Transform currentEnemyTarget;
     private Vector3 currentEnemyLocation;
+
+    public string TagNameOfCastle;
 
 
     private float currentHp;
@@ -23,35 +25,45 @@ public class SoldierCombat : Soldier
 
     void Start()
     {
-        /*
+        targetTower = GameObject.FindWithTag(TagNameOfCastle);
+
         if (targetTower != null)
         {
             MoveToPos(targetTower.transform.position);
         }
-        */
+        
     }
 
     void Update()
     {
         if (currentEnemyTarget != null)
         {
-            // Düþmana saldýr
-            agent.isStopped = true;
-            transform.LookAt(currentEnemyTarget); // Düþmana bak
-            Attack();
+            // Düþman saldýrý menzilinde ise saldýr
+            if (soldierSO.AttackRange < Vector3.Distance(currentEnemyTarget.position, gameObject.transform.position))
+            {
+                Attack();
+                agent.isStopped = true;
+
+            }
+            else
+            {
+                MoveToPos(currentEnemyTarget.transform.position);
+                transform.LookAt(currentEnemyTarget); // Düþmana bak
+            }
+
         }
         else
         {
             // Yakýndaki düþmanlarý kontrol et
             CheckForEnemies();
-            /*
+            
             if (targetTower != null)
             {
                 // Hedef kuleye doðru hareket etmeye devam et
                 agent.isStopped = false;
                 MoveToPos(targetTower.transform.position);
             }
-            */
+            
         }
     }
 
