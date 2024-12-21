@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -31,6 +32,7 @@ public class SoldierCombat : Soldier
 
     void Start()
     {
+        //ikincil asker iþlemlerini burada yap
         owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
 
 
@@ -64,15 +66,7 @@ public class SoldierCombat : Soldier
             }
         }
         else
-        {
-            
-            if (CheckForEnemies() != null)
-            {
-                return;
-            }
-
-            ClearEnemyTarget();
-            
+        {   
             if (targetTower != null)
             {
                 
@@ -90,23 +84,27 @@ public class SoldierCombat : Soldier
 
     public void TakeDamage(float damage)
     {
-        anim.HitReactAnimation();
         currentHp -= damage;
-        print("current hp:"+currentHp);
-        if (currentHp <= 0 && canRevive)
+        if (currentHp <= 0)
         {
-            anim.DieAnimation();
-            print("öldü");
-            //Instantiate Revive effect
-            if (soldierToTransform.SoldierPrefab != null)
-            {
-                Soldier soldier = Instantiate(soldierToTransform.SoldierPrefab, transform.position, transform.rotation);
-                soldier.SetCanRevive(false);
-            }
-
-            
-            Destroy(gameObject);
+            StartCoroutine(DieAndDelayedRevive(1));
         }
+    }
+
+    private IEnumerator DieAndDelayedRevive(float delayTime)
+    {
+        anim.DieAnimation();
+
+        yield return new WaitForSeconds(delayTime);
+
+        //Instantiate Revive effect
+        if (canRevive && soldierToTransform != null)
+        {
+            Soldier soldier = Instantiate(soldierToTransform, transform.position, transform.rotation);
+            soldier.SetCanRevive(false);
+        }
+
+        Destroy(gameObject);
     }
 
 
@@ -152,6 +150,7 @@ public class SoldierCombat : Soldier
         return closestEnemy;
     }
 
+
     public void SetEnemyTarget(Transform enemy)
     {
         currentTarget = enemy;
@@ -164,8 +163,11 @@ public class SoldierCombat : Soldier
 
     private void Attack()
     {
-
-        print("yapýþtýrdý lavuða:"+currentTarget.name);
+        if (currentTarget.TryGetComponent<SoldierCombat>(out var enemy))
+        {
+            enemy.TakeDamage(soldierSO.AttackDamage);
+        }
+        
        
     }
 

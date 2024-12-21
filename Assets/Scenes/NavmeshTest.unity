@@ -559,11 +559,56 @@ PrefabInstance:
       propertyPath: offSet.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2366677661762166615, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366677661762166615, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce,
+        type: 2}
     - target: {fileID: 2967757991979522072, guid: 93681d4d380a18e4caa3383b7fe7702f,
         type: 3}
       propertyPath: m_Name
       value: SoldierCards
       objectReference: {fileID: 0}
+    - target: {fileID: 3062801509683140325, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062801509683140325, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce,
+        type: 2}
+    - target: {fileID: 3062801509683140325, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 34ea8c5b0d439e945a0e082b1c71cf28,
+        type: 2}
+    - target: {fileID: 4714964328371084448, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714964328371084448, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e,
+        type: 2}
+    - target: {fileID: 4714964328371084448, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 34ea8c5b0d439e945a0e082b1c71cf28,
+        type: 2}
     - target: {fileID: 5470484074195560085, guid: 93681d4d380a18e4caa3383b7fe7702f,
         type: 3}
       propertyPath: m_AnchorMax.y

@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 6347737106622278471}
   - component: {fileID: 6852142751549903408}
   - component: {fileID: 2851990330785530077}
+  - component: {fileID: -4625550160390054956}
   m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
@@ -490,6 +491,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-4625550160390054956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341965978936118383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbfb5b6a6515e245aba3dc039a1600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldiersToTransform:
+  - {fileID: 2335741173342537272, guid: dd61655bf302f1843b68a5852bb073e6, type: 3}
+  - {fileID: 5959364119595114050, guid: 2c215dfbebd6e8d49b4f0c8d91929aa6, type: 3}
 --- !u!1 &1342075384882199554
 GameObject:
   m_ObjectHideFlags: 0

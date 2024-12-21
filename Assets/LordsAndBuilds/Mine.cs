@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
@@ -13,22 +10,45 @@ public class Mine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == allyLayer)
+        if (other.CompareTag("Miner"))
         {
-            allyMinerCount++;
-            GetComponent<MineUIUpdater>().UpdateMinerCounts();
+            Miner miner = other.GetComponent<Miner>();
 
-        }
-        else if (other.gameObject.layer == enemyLayer)
-        {
-            enemyMinerCount++;
-            GetComponent<MineUIUpdater>().UpdateMinerCounts();
+            if (miner != null)
+            {
+                if (miner.OwnerTagNameOfCastle == "AllyCastle")
+                {
+                    allyMinerCount++;
+                }
+                else
+                {
+                    enemyMinerCount++;
+                }
+
+                GetComponent<MineUIUpdater>().UpdateMinerCounts();
+            }
         }
     }
 
-    void MinerEnteredMine(GameObject miner)
+    private void OnTriggerExit(Collider other)
     {
-        
-    }
+        if (other.CompareTag("Miner"))
+        {
+            Miner miner = other.GetComponent<Miner>();
 
+            if (miner != null)
+            {
+                if (miner.OwnerTagNameOfCastle == "AllyCastle")
+                {
+                    allyMinerCount--;
+                }
+                else
+                {
+                    enemyMinerCount--;
+                }
+
+                GetComponent<MineUIUpdater>().UpdateMinerCounts();
+            }
+        }
+    }
 }

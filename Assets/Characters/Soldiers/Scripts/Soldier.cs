@@ -8,12 +8,20 @@ public abstract class Soldier : MonoBehaviour
     [SerializeField] private float rangeIndicatorExpandRate = 1.5f;
 
     private bool rangeIsActive;
-    protected SoldierSO soldierToTransform;
+    protected Soldier soldierToTransform;
     protected bool canRevive = true;
+    private SoldierTranformation tranformation;
 
 
     protected virtual void Awake()
     {
+        tranformation = GetComponent<SoldierTranformation>();
+        if (transform != null)
+        {
+            soldierToTransform = tranformation.GetRandomSoldierToTransform();
+        }
+
+
         if (rangePrefab != null)
         {
             rangePrefab.transform.localScale = new Vector3(soldierSO.Range * rangeIndicatorExpandRate, rangePrefab.transform.localScale.y,  soldierSO.Range * rangeIndicatorExpandRate);
@@ -25,12 +33,6 @@ public abstract class Soldier : MonoBehaviour
     public void SetCanRevive(bool canRevive)
     {
         this.canRevive = canRevive;
-    }
-
-    public void SetSoldierToTransform(SoldierSO soldierToTransform)
-    {
-        print("soldier set");
-        this.soldierToTransform = soldierToTransform;
     }
 
     protected void OnMouseDown()
