@@ -10,9 +10,16 @@ public class PlacementArea : MonoBehaviour
 
     public Transform lineRect;
 
-    public static PlacementArea Instance;
+    public static PlacementArea Instance{get;private set;}
     public void Awake() {
-        Instance=this;
+        if (Instance != null && Instance != this) 
+    { 
+        Destroy(this); 
+    } 
+    else 
+    { 
+        Instance = this; 
+    } 
     }
 
     public void EnableRect()
