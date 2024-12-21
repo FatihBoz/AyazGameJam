@@ -1,17 +1,46 @@
 using UnityEngine;
 
-public class Lord : MonoBehaviour
+public class Lord : MonoBehaviour, ICombat
 {
-    public int gold = 0;
+    [Header("VFX")]
+    [SerializeField] private GameObject stoneHitEffect;
 
+    [Header("* * Numerical Values * * ")]
+    [SerializeField] private float maxHP = 500f;
+    
+    public int gold = 0;
     public int currentMinerCount = 0;
+
+    [Header("** UI **")]
+    [SerializeField] private HealthBarUI healthBarUI;
+
+    private float currentHp;
+
+
+    private void Start()
+    {
+        healthBarUI.relatedBeing = this;
+        healthBarUI.SetMaxHealth(maxHP);
+        currentHp = maxHP;
+
+    }
 
     public void AddGold(float amount)
     {
         gold += (int)amount;
     }
 
-    private void Update()
+
+    public void TakeDamage(float damageAmount)
     {
+        currentHp -= damageAmount;
+        healthBarUI.TakeDamage(currentHp);
+    }
+
+    public void TakeDamage(float damageAmount, Vector3 pos)
+    {
+        TakeDamage(damageAmount);
+        Vector3 closestPoint = GetComponent<Collider>().ClosestPoint(pos);
+        Destroy(Instantiate(stoneHitEffect, closestPoint, Quaternion.identity), .75f);
     }
 }

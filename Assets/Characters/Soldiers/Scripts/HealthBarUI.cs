@@ -4,32 +4,26 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    public SoldierCombat relatedSoldier;
+    public ICombat relatedBeing;
     private Slider healthSlider;
     private float maxHealth = 100f;
 
     private void Awake()
     {
         healthSlider = GetComponent<Slider>();
+        SetMaxHealth(maxHealth);
     }
 
-    void Start()
+    public void SetMaxHealth(float maxHP)
     {
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = maxHealth;
-    }
-
-    private void FixedUpdate()
-    {
-        if (relatedSoldier == null)
-        {
-            Destroy(gameObject);
-        }
+        healthSlider.maxValue = maxHP;
+        healthSlider.value = maxHP;
     }
 
 
     public void TakeDamage(float currentHp)
     {
         healthSlider.value = currentHp;
+        print("current hp :"+ currentHp);
     }
 }

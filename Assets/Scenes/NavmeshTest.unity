@@ -209,13 +209,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459022522}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.8984878, z: -0.43899852, w: 0}
-  m_LocalPosition: {x: 0, y: 12.88, z: 14.62}
+  m_LocalRotation: {x: -0, y: 0.8669928, z: -0.49832082, w: 0}
+  m_LocalPosition: {x: 0, y: 18.02, z: 14.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 52.08, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.778, y: 180, z: 0}
 --- !u!114 &459022526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +400,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 826122712985774784, guid: 085a743f58881ec41ae509e0b029f3dd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 826122712985774784, guid: 085a743f58881ec41ae509e0b029f3dd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2174338166480810078, guid: 085a743f58881ec41ae509e0b029f3dd,
         type: 3}
       propertyPath: m_Name
@@ -1113,10 +1123,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle Player
       objectReference: {fileID: 0}
-    - target: {fileID: 658965042788416280, guid: bab88a55bbb4d4b408de7feb85a8e822,
+    - target: {fileID: 3740652881093387977, guid: bab88a55bbb4d4b408de7feb85a8e822,
         type: 3}
-      propertyPath: m_Layer
-      value: 11
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740652881093387977, guid: bab88a55bbb4d4b408de7feb85a8e822,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8439603511183194483, guid: bab88a55bbb4d4b408de7feb85a8e822,
         type: 3}
