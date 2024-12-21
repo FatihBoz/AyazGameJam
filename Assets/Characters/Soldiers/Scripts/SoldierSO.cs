@@ -13,7 +13,7 @@ public class SoldierSO : ScriptableObject
     [SerializeField] private float cost;
     [SerializeField] private AudioClip attackAudio;
 
-    public AudioClip attackAudioClip;
+    public AudioClip attackAudioClip { get => attackAudio; }
     public float Cost { get => cost; }
     public float AttackDamage { get => attackDamage;}
     public float AttackSpeed { get => attackSpeed; }
