@@ -12,11 +12,17 @@ public class SoldierCard : MinerCard, IPointerDownHandler, IPointerUpHandler
     private SoldierCombat placingSoldierPrefab;
     private SoldierSO soldierToTransform;
 
+    private PlacementArea placementArea;
 
 
     protected override void Awake()
     {
+
         base.Awake();
+
+        placementArea=FindAnyObjectByType<PlacementArea>();
+        mainCam = Camera.main;
+
         soldierToTransform = GetSoldierToTransform();
     }
 
@@ -86,10 +92,11 @@ public class SoldierCard : MinerCard, IPointerDownHandler, IPointerUpHandler
         if (isPlacing && Input.GetMouseButton(0))
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
             {
-                placingSoldierPrefab.transform.position = hit.point + offSet;
+                Vector3 realPos = placementArea.GetValidPosition(hit.point + offSet);
+                realPos.y= (hit.point + offSet).y;
+                placingSoldierPrefab.transform.position = realPos;
             }
         }
     }
