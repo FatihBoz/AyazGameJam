@@ -15,6 +15,7 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     protected bool canPlace = true;
     private MinerSoldier placingMinerPrefab;
 
+
     protected virtual void Awake()
     {
         mainCam = Camera.main;
@@ -24,6 +25,7 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        PlacementArea.Instance.DisableRect();
         if (!isPlacing) return;
 
         PlaceSoldier();
@@ -35,6 +37,7 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isPlacing) return;
 
         StartPlacingSoldier();
+        PlacementArea.Instance.EnableRect();
     }
 
 
@@ -93,7 +96,9 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
             {
-                placingMinerPrefab.transform.position = hit.point + offSet;
+                Vector3 realPos =  PlacementArea.Instance.GetValidPosition(hit.point + offSet);
+                realPos.y= (hit.point + offSet).y;
+                placingMinerPrefab.transform.position = realPos;
             }
         }
     }

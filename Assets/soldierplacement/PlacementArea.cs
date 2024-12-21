@@ -10,6 +10,11 @@ public class PlacementArea : MonoBehaviour
 
     public Transform lineRect;
 
+    public static PlacementArea Instance;
+    public void Awake() {
+        Instance=this;
+    }
+
     public void EnableRect()
     {
         lineRect.gameObject.SetActive(true);
