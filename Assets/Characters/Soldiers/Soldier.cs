@@ -5,16 +5,21 @@ public abstract class Soldier : MonoBehaviour
     [SerializeField] protected SoldierSO soldierSO;
     [SerializeField] protected GameObject rangePrefab;
     [SerializeField] protected LayerMask groundLayer;
+    [SerializeField] private float rangeIndicatorExpandRate = 1.5f;
 
     private bool rangeIsActive;
     protected SoldierSO soldierToTransform;
     protected bool canRevive = true;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        rangePrefab.transform.localScale = new Vector3(soldierSO.Range, rangePrefab.transform.localScale.y, soldierSO.Range);
-        canRevive = true;
+        if (rangePrefab != null)
+        {
+            rangePrefab.transform.localScale = new Vector3(soldierSO.Range * rangeIndicatorExpandRate, rangePrefab.transform.localScale.y,  soldierSO.Range * rangeIndicatorExpandRate);
+            canRevive = true;
+        }
+
     }
 
     public void SetCanRevive(bool canRevive)
@@ -30,6 +35,9 @@ public abstract class Soldier : MonoBehaviour
 
     protected void OnMouseDown()
     {
+        if (rangePrefab == null)
+            return;
+
         if (rangeIsActive)
         {
             rangeIsActive = false;

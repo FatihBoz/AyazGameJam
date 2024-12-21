@@ -88,6 +88,12 @@ public class SimpleAI : MonoBehaviour
         // Askeri spawn et
         Instantiate(selectedSoldier, spawnPoint.position, spawnPoint.rotation);
 
+
+        //Cost'a eriþ
+        //GetComponent<Lord>().AddGold(selectedSoldier.GetComponent<SoldierCombat>().soldierSO);
+        GetComponent<Lord>().AddGold(-20);
+
+
         Debug.Log("Hop yeni asker");
     }
 
