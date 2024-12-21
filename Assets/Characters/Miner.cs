@@ -21,14 +21,19 @@ public class Miner : MonoBehaviour
     private NavMeshAgent agent;
     private Renderer minerRenderer; // Görünmez yapmak için
 
+    AudioSource audioSource;
+
     private void Awake()
     {
+
+        audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         minerRenderer = GetComponentInChildren<Renderer>();
     }
 
     private void Start()
     {
+
         owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
         ownerGameObject = GameObject.FindWithTag(OwnerTagNameOfCastle);
     }
@@ -90,6 +95,9 @@ public class Miner : MonoBehaviour
 
     private IEnumerator MineGold(Mine mine)
     {
+        audioSource.Play();
+        audioSource.Play();
+
         yield return new WaitForSeconds(mineTime); // Madende bekle
         isInMine = false;
         hasGold = true;

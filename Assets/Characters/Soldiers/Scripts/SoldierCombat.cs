@@ -36,6 +36,8 @@ public class SoldierCombat : Soldier , ICombat
 
     private float currentHp;
     private ISoldierAnimation anim;
+    AudioSource audioSource;
+
 
 
     protected override void Awake()
@@ -54,6 +56,11 @@ public class SoldierCombat : Soldier , ICombat
         {
             MoveToPos(targetTower.transform.position);
         }
+
+
+        audioSource = GetComponent<AudioSource>();
+
+        audioSource.clip = soldierSO.attackAudioClip;
 
     }
 
@@ -231,6 +238,8 @@ public class SoldierCombat : Soldier , ICombat
         {
             enemy.TakeDamage(soldierSO.AttackDamage,transform.position);
         }
+
+        audioSource.Play();
     }
 
     public void ChangeMaterial(Material material)
