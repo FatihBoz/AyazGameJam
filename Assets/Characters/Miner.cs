@@ -92,6 +92,7 @@ public class Miner : MonoBehaviour
         }
         if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
         {
+            UIUpdater.instance.UpdateSource();
             Owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
             hasGold = false; // Altýn býrakýldý
             print("Deployed GOld");
@@ -103,7 +104,6 @@ public class Miner : MonoBehaviour
         //audioSource.Play();
         //audioSource.Play();
         minerSoldier.MakeHealthBarActive(false);
-        print("e girdi buraya");
         yield return new WaitForSeconds(mineTime); // Madende bekle
         minerSoldier.MakeHealthBarActive(true);
         isInMine = false;

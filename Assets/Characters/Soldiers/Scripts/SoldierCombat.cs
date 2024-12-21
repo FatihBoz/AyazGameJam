@@ -226,19 +226,24 @@ public class SoldierCombat : Soldier , ICombat
 
     private void Attack() // with animation event
     {
-        if (currentTarget.TryGetComponent<ICombat>(out var enemy))
+        if (soldierSO.AttackDamage == 8)
         {
-            enemy.TakeDamage(soldierSO.AttackDamage);
-        }
-
-        if(soldierSO.AttackDamage == 8)
-        {
-            if(gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
+            if (gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
             {
                 RangedSoldier.Shoot(currentTarget);
 
             }
+            if (currentTarget.TryGetComponent<ICombat>(out var enemy))
+            {
+                enemy.TakeDamage(soldierSO.AttackDamage);
+            }
         }
+        else if (currentTarget.TryGetComponent<ICombat>(out var enemy))
+        {
+            enemy.TakeDamage(soldierSO.AttackDamage);
+        }
+
+
 
 
         
