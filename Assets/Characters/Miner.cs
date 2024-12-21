@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Miner : MonoBehaviour
 {
@@ -10,41 +11,52 @@ public class Miner : MonoBehaviour
 
     Lord owner;
 
+    GameObject ownerGameObject;
+
+    bool hasSource;
+
     public string OwnerTagNameOfCastle;
 
     public float moveSpeed = 3f; // Madencinin hareket hýzý
+
+    NavMeshAgent agent;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+
+    public void MoveToPos(Vector3 pos)
+    {
+        agent.SetDestination(pos);
+        agent.stoppingDistance = 1f; // Hedefe yaklaþýnca dur
+    }
 
     private void Start()
     {
         owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
 
+        ownerGameObject = GameObject.FindWithTag(OwnerTagNameOfCastle);
+
+        owner.AddGold(goldPerSecond);
     }
 
     private void Update()
     {
-        if (isInMine)
+
+        if (hasSource)
         {
-            // Madencinin içinde bulunduðu madene baðlý olarak altýn kazan
-            timeSpentInMine += Time.deltaTime;
-            if (timeSpentInMine >= 1f) // 1 saniye geçtiðinde
-            {
-                timeSpentInMine = 0f;
-                if (owner != null)
-                {
-                    owner.AddGold(goldPerSecond); // Sahibi altýn kazandýr
-                }
-            }
+            MoveToPos(ownerGameObject.transform.position);
         }
         else
         {
-            // Madenci en yakýn "Mine" nesnesini bulmaya çalýþýyor
             FindClosestMine();
+        }
 
-            if (targetMine != null)
-            {
-                // En yakýn "Mine" nesnesine doðru hareket et
-                MoveTowardsMine();
-            }
+        if (targetMine != null)
+        {
+            MoveToPos(targetMine.position);
+            //print("Going To Mine");
         }
     }
 
@@ -62,17 +74,6 @@ public class Miner : MonoBehaviour
                     targetMine = hit.transform; // En yakýn "Mine" nesnesini bul
                 }
             }
-        }
-    }
-
-    private void MoveTowardsMine()
-    {
-        if (targetMine != null)
-        {
-            GetComponent<MineMovement>().MoveToMine(targetMine.position);
-            print("Aloo bu maden nerde?");
-            //Vector3 direction = (targetMine.position - transform.position).normalized; // "Mine" nesnesine doðru yön
-            //transform.position = Vector3.MoveTowards(transform.position, targetMine.position, moveSpeed * Time.deltaTime); // Madenci hareket et
         }
     }
 
