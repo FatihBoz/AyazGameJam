@@ -21,3 +21,4 @@ MonoBehaviour:
   attackRange: 6
   detectionRange: 20
   maxHp: 300
+  cost: 60

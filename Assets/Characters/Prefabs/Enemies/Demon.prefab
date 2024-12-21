@@ -447,11 +447,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  owner: {fileID: 0}
   agent: {fileID: 2851990330785530077}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  TagNameOfCastle: AllyCastle
+  TargetTagNameOfCastle: AllyCastle
+  OwnerTagNameOfCastle: EnemyCastle
 --- !u!114 &6852142751549903408
 MonoBehaviour:
   m_ObjectHideFlags: 0

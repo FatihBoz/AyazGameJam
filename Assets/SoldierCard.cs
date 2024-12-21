@@ -60,6 +60,11 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     void PlaceSoldier()
     {
         Soldier soldier = Instantiate(soldierPrefab, placingPrefab.transform.position, Quaternion.identity);
+
+        //COST belirleme
+        //soldier.GetComponent<SoldierCombat>().owner.GetComponent<Lord>().AddGold(-20);
+        //UIUpdater.instance.UpdateSource();
+
         soldier.SetSoldierToTransform(soldierToTransform);
         soldier.RangePrefab.SetActive(false);
         Destroy(placingPrefab);

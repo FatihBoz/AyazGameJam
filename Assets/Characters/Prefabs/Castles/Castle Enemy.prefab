@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4258784100942129836}
   m_Layer: 0
   m_Name: Castle Enemy
-  m_TagString: Untagged
+  m_TagString: EnemyCastle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

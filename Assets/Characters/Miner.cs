@@ -8,10 +8,17 @@ public class Miner : MonoBehaviour
     private float detectionRadius = 10f; // Madencinin arayacaðý mesafe
     private Transform targetMine; // En yakýn "Mine" nesnesi
 
-    public Lord owner;
+    Lord owner;
+
+    public string TagNameOfCastle;
 
     public float moveSpeed = 3f; // Madencinin hareket hýzý
 
+    private void Start()
+    {
+        owner = GameObject.FindWithTag(TagNameOfCastle).GetComponent<Lord>();
+
+    }
 
     private void Update()
     {

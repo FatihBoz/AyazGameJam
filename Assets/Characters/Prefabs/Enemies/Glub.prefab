@@ -721,11 +721,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  owner: {fileID: 0}
   agent: {fileID: 3540400599989434465}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  TagNameOfCastle: AllyCastle
+  TargetTagNameOfCastle: AllyCastle
+  OwnerTagNameOfCastle: EnemyCastle
 --- !u!136 &4087656248264908978
 CapsuleCollider:
   m_ObjectHideFlags: 0

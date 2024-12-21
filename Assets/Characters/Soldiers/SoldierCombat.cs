@@ -1,15 +1,19 @@
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class SoldierCombat : Soldier
 {
+    public Lord owner;
+
     public NavMeshAgent agent;
     GameObject targetTower;
     public LayerMask enemyLayer;
     private Transform currentEnemyTarget;
     private Vector3 currentEnemyLocation;
 
-    public string TagNameOfCastle;
+    public string TargetTagNameOfCastle;
+    public string OwnerTagNameOfCastle;
 
 
     private float currentHp;
@@ -20,12 +24,15 @@ public class SoldierCombat : Soldier
     {
         base.Awake();
         currentHp = soldierSO.MaxHp;
-        anim = GetComponent<ISoldierAnimation>();   
+        anim = GetComponent<ISoldierAnimation>();
     }
 
     void Start()
     {
-        targetTower = GameObject.FindWithTag(TagNameOfCastle);
+        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
+
+
+        targetTower = GameObject.FindWithTag(TargetTagNameOfCastle);
 
         if (targetTower != null)
         {

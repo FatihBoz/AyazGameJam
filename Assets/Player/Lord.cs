@@ -13,6 +13,5 @@ public class Lord : MonoBehaviour
 
     private void Update()
     {
-        print(gold);
     }
 }

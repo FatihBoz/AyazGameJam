@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 822393835678740253}
   m_Layer: 0
   m_Name: Castle Player
-  m_TagString: Untagged
+  m_TagString: AllyCastle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
