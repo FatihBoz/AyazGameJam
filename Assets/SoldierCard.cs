@@ -18,9 +18,11 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private SoldierSO soldierToTransform;
     private bool canPlace = true;
 
+    private PlacementArea placementArea;
 
     private void Awake()
     {
+        placementArea=FindAnyObjectByType<PlacementArea>();
         mainCam = Camera.main;
         soldierToTransform = GetSoldierToTransform();
     }
@@ -106,10 +108,11 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isPlacing && Input.GetMouseButton(0))
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
-
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
             {
-                placingSoldierPrefab.transform.position = hit.point + offSet;
+                Vector3 realPos = placementArea.GetValidPosition(hit.point + offSet);
+                realPos.y= (hit.point + offSet).y;
+                placingSoldierPrefab.transform.position = realPos;
             }
         }
     }
