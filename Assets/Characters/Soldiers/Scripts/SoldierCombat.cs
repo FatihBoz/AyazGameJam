@@ -58,9 +58,9 @@ public class SoldierCombat : Soldier , ICombat
         }
 
 
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
 
-        audioSource.clip = soldierSO.attackAudioClip;
+        //audioSource.clip = soldierSO.attackAudioClip;
 
     }
 
@@ -226,12 +226,31 @@ public class SoldierCombat : Soldier , ICombat
 
     private void Attack() // with animation event
     {
-        if (currentTarget.TryGetComponent<ICombat>(out var enemy))
+        if (soldierSO.AttackDamage == 8)
+        {
+            if (gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
+            {
+                RangedSoldier.Shoot(currentTarget);
+
+            }
+            if (currentTarget.TryGetComponent<ICombat>(out var enemy))
+            {
+                enemy.TakeDamage(soldierSO.AttackDamage);
+            }
+        }
+        else if (currentTarget.TryGetComponent<ICombat>(out var enemy))
         {
             enemy.TakeDamage(soldierSO.AttackDamage);
         }
 
-        audioSource.Play();
+
+
+
+        
+        if(audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     public void ChangeMaterial(Material material)

@@ -19,5 +19,6 @@ MonoBehaviour:
   range: 3
   moveSpeed: 5
   detectionRange: 4
-  maxHp: 300
+  maxHp: 170
   cost: 60
+  attackAudio: {fileID: 8300000, guid: 80c290461927dbe4e82a5d40b52d9208, type: 3}

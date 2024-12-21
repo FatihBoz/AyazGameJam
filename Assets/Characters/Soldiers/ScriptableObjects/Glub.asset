@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soldierPrefab: {fileID: 5959364119595114050, guid: 2c215dfbebd6e8d49b4f0c8d91929aa6,
     type: 3}
-  attackDamage: 5
+  attackDamage: 8
   attackSpeed: 5
   range: 6
   moveSpeed: 5
-  attackRange: 9
   detectionRange: 6
   maxHp: 89
   cost: 60
+  attackAudio: {fileID: 8300000, guid: 105cecb4bd4707d4bad8114172f7593b, type: 3}

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6541352452685876026}
   - component: {fileID: 3489679946300610275}
   - component: {fileID: 1142477381735860513}
+  - component: {fileID: 7157459644717175088}
   m_Layer: 7
   m_Name: Miner
   m_TagString: Untagged
@@ -264,3 +265,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7157459644717175088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8030922940502791339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08e32f645915584d9e5ba40db3b2f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  healthBarPrefab: {fileID: 4516639316002204741, guid: f80f96c972b5e3041bbfbe1fbce8869b,
+    type: 3}
+  healthBarOffset: {x: 0, y: 2.5, z: 0}
+  healthBarXRotationOffSet: 0
+  dyingEffect: {fileID: 5970241725988088956, guid: 5193bbbca9d086346a7eb902996ca39e,
+    type: 3}
+  bloodEffect: {fileID: 440273542176214765, guid: e7a1cd905d35cf34581aa85456fdb55b,
+    type: 3}
+  effectDestroyTime: 1
+  effectOffSet: {x: 0, y: 0.5, z: 0}
+  owner: {fileID: 0}
+  Cost: 50
+  meshRenderer: {fileID: 9011821147723049566}
+  OwnerTagNameOfCastle: AllyCastle

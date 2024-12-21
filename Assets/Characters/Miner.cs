@@ -21,11 +21,16 @@ public class Miner : MonoBehaviour
     private NavMeshAgent agent;
     private Renderer minerRenderer; // Görünmez yapmak için
 
+    private MinerSoldier minerSoldier;
+
+
     AudioSource audioSource;
+
+    public Lord Owner { get => owner;}
 
     private void Awake()
     {
-
+        minerSoldier = GetComponent<MinerSoldier>();
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         minerRenderer = GetComponentInChildren<Renderer>();
@@ -83,22 +88,24 @@ public class Miner : MonoBehaviour
             agent.isStopped = true; // Hareketi durdur
             minerRenderer.enabled = false; // Görünmez yap
 
-            StartCoroutine(MineGold(other.GetComponent<Mine>()));
+            StartCoroutine(MineGold());
         }
         if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
         {
-            owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
+            UIUpdater.instance.UpdateSource();
+            Owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
             hasGold = false; // Altýn býrakýldý
             print("Deployed GOld");
         }
     }
 
-    private IEnumerator MineGold(Mine mine)
+    private IEnumerator MineGold()
     {
-        audioSource.Play();
-        audioSource.Play();
-
+        //audioSource.Play();
+        //audioSource.Play();
+        minerSoldier.MakeHealthBarActive(false);
         yield return new WaitForSeconds(mineTime); // Madende bekle
+        minerSoldier.MakeHealthBarActive(true);
         isInMine = false;
         hasGold = true;
         minerRenderer.enabled = true; // Görünür yap
@@ -115,5 +122,15 @@ public class Miner : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    public void MakeHealthBarInactive()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void MakeHealthBarActive()
+    {
+        throw new System.NotImplementedException();
     }
 }
