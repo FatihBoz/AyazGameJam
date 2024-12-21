@@ -54,7 +54,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         placingSoldierPrefab = (SoldierCombat)Instantiate(soldierPrefab);
         placingSoldierPrefab.GetComponent<Collider>().enabled = false;
-        placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);
+        placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);    
 
         isPlacing = true;
         Cursor.visible = false; 
@@ -67,8 +67,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //COST belirleme
         //soldier.GetComponent<SoldierCombat>().owner.GetComponent<Lord>().AddGold(-20);
         //UIUpdater.instance.UpdateSource();
-
-        soldier.SetSoldierToTransform(soldierToTransform);
+        
         soldier.RangePrefab.SetActive(false);
         Destroy(placingSoldierPrefab.gameObject);
 

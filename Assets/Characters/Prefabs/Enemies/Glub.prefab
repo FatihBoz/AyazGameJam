@@ -646,6 +646,7 @@ GameObject:
   - component: {fileID: 4087656248264908978}
   - component: {fileID: 2022920803570501838}
   - component: {fileID: 3540400599989434465}
+  - component: {fileID: -1903814958093305828}
   m_Layer: 7
   m_Name: Glub
   m_TagString: Untagged
@@ -802,6 +803,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-1903814958093305828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5641672811232777236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbfb5b6a6515e245aba3dc039a1600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldiersToTransform:
+  - {fileID: 6347737106622278471, guid: 2c2226073e6b061438a10762f813b80e, type: 3}
+  - {fileID: 2335741173342537272, guid: dd61655bf302f1843b68a5852bb073e6, type: 3}
 --- !u!1 &6427312536750953187
 GameObject:
   m_ObjectHideFlags: 0

@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 3067099777763752818}
   - component: {fileID: 2238493222950175667}
   - component: {fileID: 4943060616155686586}
+  - component: {fileID: -3382088513402198733}
   m_Layer: 6
   m_Name: Dino Ally
   m_TagString: Untagged
@@ -989,10 +990,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.38280994
   m_Height: 1.4581895
   m_Direction: 1
-  m_Center: {x: 0, y: 0.63923097, z: 0}
+  m_Center: {x: 0, y: 0.63923097, z: -0.11719006}
 --- !u!54 &2238493222950175667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1042,6 +1043,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-3382088513402198733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428131355612969437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbfb5b6a6515e245aba3dc039a1600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldiersToTransform:
+  - {fileID: 3295636138794631329, guid: e252582846741f74182a2cffc50cea63, type: 3}
+  - {fileID: 4925433174758859952, guid: f4922383d6bf3834baee4e77e09a5c23, type: 3}
 --- !u!1 &3586739963203915904
 GameObject:
   m_ObjectHideFlags: 0

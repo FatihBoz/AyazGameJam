@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: 1624207368319190452}
   - component: {fileID: 8500780172595930543}
   - component: {fileID: 7039745650543254457}
+  - component: {fileID: -1237079587565305999}
   m_Layer: 6
   m_Name: Demon Ally
   m_TagString: Untagged
@@ -1085,7 +1086,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 8281072708880079765}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1152
   TargetTagNameOfCastle: EnemyCastle
   OwnerTagNameOfCastle: AllyCastle
 --- !u!114 &8500780172595930543
@@ -1122,6 +1123,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-1237079587565305999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295636138794631329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbfb5b6a6515e245aba3dc039a1600b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldiersToTransform:
+  - {fileID: 3428131355612969437, guid: a3b0f0b248d53f849b41bafec88aa3ca, type: 3}
+  - {fileID: 4925433174758859952, guid: f4922383d6bf3834baee4e77e09a5c23, type: 3}
 --- !u!1 &3305980531006498900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,6 +2611,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989853518271753882, guid: ce6d405f51bc4f3468cbf984c289768f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8117156417120413605, guid: ce6d405f51bc4f3468cbf984c289768f,
         type: 3}
