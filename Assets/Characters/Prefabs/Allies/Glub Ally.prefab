@@ -437,10 +437,10 @@ GameObject:
   - component: {fileID: 4713082017073557555}
   - component: {fileID: 6226079598238183192}
   - component: {fileID: 5511092362366080537}
-  - component: {fileID: 1903692976594196759}
   - component: {fileID: 1840411552988654520}
   - component: {fileID: 7142946453800375123}
   - component: {fileID: 2352249086667299998}
+  - component: {fileID: -6732350916428596581}
   m_Layer: 6
   m_Name: Glub Ally
   m_TagString: Untagged
@@ -522,7 +522,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 2465280660251491880, guid: d081efb1f541a124b9974a2a874278f1,
     type: 3}
   healthBarOffset: {x: 0, y: 3.1, z: 0}
-  healthBarXRotationOffSet: -45
+  healthBarXRotationOffSet: 0
   dyingEffect: {fileID: 5970241725988088956, guid: 5193bbbca9d086346a7eb902996ca39e,
     type: 3}
   bloodEffect: {fileID: 2165260561057509999, guid: 009ffed490f364941944ef44c70c3587,
@@ -560,33 +560,6 @@ CapsuleCollider:
   m_Height: 2.0557587
   m_Direction: 1
   m_Center: {x: 0, y: 0.7752066, z: 0}
---- !u!54 &1903692976594196759
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4925433174758859952}
-  serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!195 &1840411552988654520
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -622,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldiersToTransform:
-  - {fileID: 0}
+  - {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63, type: 3}
   - {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca, type: 3}
 --- !u!82 &2352249086667299998
 AudioSource:
@@ -720,6 +693,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &-6732350916428596581
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925433174758859952}
+  serializedVersion: 4
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &5050907039576037846
 GameObject:
   m_ObjectHideFlags: 0

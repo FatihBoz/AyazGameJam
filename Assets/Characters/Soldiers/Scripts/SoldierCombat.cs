@@ -52,7 +52,6 @@ public class SoldierCombat : Soldier , ICombat
 
         if (targetTower != null)
         {
-            print("target tower null deðil");
             MoveToPos(targetTower.transform.position);
         }
 
@@ -74,11 +73,6 @@ public class SoldierCombat : Soldier , ICombat
 
     void Update()
     {
-        if (healthBarInstance != null)
-        {
-            print("HP BAR INSTANCE NULL DEÐÝL "+healthBarInstance.name);
-            
-        }
         CheckForEnemies();
 
         if (currentTarget != null)
@@ -98,6 +92,7 @@ public class SoldierCombat : Soldier , ICombat
             {
                 if (agent.isActiveAndEnabled)
                 {
+                    print("targeta giriyor :"+currentTarget.name);
                     MoveToPos(currentTarget.transform.position);
                 }
 
@@ -110,6 +105,7 @@ public class SoldierCombat : Soldier , ICombat
                 if (agent.isActiveAndEnabled)
                 {
                     agent.isStopped = false;
+
                     MoveToPos(targetTower.transform.position);
                     SetEnemyTarget(targetTower.transform);
                 }
@@ -120,6 +116,8 @@ public class SoldierCombat : Soldier , ICombat
         if (currentTarget != null)
         {
             transform.LookAt(currentTarget);
+
+            transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
         }
 
 
@@ -143,10 +141,14 @@ public class SoldierCombat : Soldier , ICombat
         }
     }
 
+
+
     public void TakeDamage(float damageAmount, Vector3 pos)
     {
-        TakeDamage(damageAmount, Vector3.zero);
+        TakeDamage(damageAmount);
     }
+
+
 
     private IEnumerator DieAndDelayedRevive(float delayTime)
     {

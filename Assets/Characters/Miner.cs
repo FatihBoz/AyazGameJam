@@ -47,9 +47,9 @@ public class Miner : MonoBehaviour
         {
             FindClosestMine();
 
-            if (targetMine != null)
+            if (targetMine != null && agent.isActiveAndEnabled)
             {
-                MoveToPos(targetMine.position); // En yakýn madene git
+                MoveToPos(targetMine.position);
             }
         }
     }

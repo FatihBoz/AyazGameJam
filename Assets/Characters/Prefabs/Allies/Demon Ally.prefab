@@ -1086,7 +1086,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 2465280660251491880, guid: d081efb1f541a124b9974a2a874278f1,
     type: 3}
   healthBarOffset: {x: 0, y: 3, z: 0}
-  healthBarXRotationOffSet: -45
+  healthBarXRotationOffSet: 0
   dyingEffect: {fileID: 5970241725988088956, guid: 5193bbbca9d086346a7eb902996ca39e,
     type: 3}
   bloodEffect: {fileID: 2165260561057509999, guid: 009ffed490f364941944ef44c70c3587,
@@ -1148,8 +1148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soldiersToTransform:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca, type: 3}
+  - {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23, type: 3}
 --- !u!82 &7595410607205700423
 AudioSource:
   m_ObjectHideFlags: 0
