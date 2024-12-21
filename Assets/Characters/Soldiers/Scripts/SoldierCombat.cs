@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class SoldierCombat : Soldier
+public class SoldierCombat : Soldier , ICombat
 {
     [Header("*** Health Bar ***")]
     [SerializeField] private GameObject healthBarPrefab;
@@ -69,7 +69,7 @@ public class SoldierCombat : Soldier
     {
         healthBarInstance = Instantiate(healthBarPrefab, transform.position + healthBarOffset, Quaternion.identity).GetComponent<HealthBarUI>();
 
-        healthBarInstance.relatedSoldier = this;
+        healthBarInstance.relatedBeing = this;
         GameObject soldierCanvas = GameObject.Find("SoldierCanvas");
         healthBarInstance.transform.SetParent(soldierCanvas.transform);
     }
@@ -132,6 +132,11 @@ public class SoldierCombat : Soldier
         {
             StartCoroutine(DieAndDelayedRevive(effectDestroyTime));
         }
+    }
+
+    public void TakeDamage(float damageAmount, Vector3 pos)
+    {
+        TakeDamage(damageAmount, Vector3.zero);
     }
 
     private IEnumerator DieAndDelayedRevive(float delayTime)
@@ -208,9 +213,9 @@ public class SoldierCombat : Soldier
 
     private void Attack() // with animation event
     {
-        if (currentTarget.TryGetComponent<SoldierCombat>(out var enemy))
+        if (currentTarget.TryGetComponent<ICombat>(out var enemy))
         {
-            enemy.TakeDamage(soldierSO.AttackDamage);
+            enemy.TakeDamage(soldierSO.AttackDamage,transform.position);
         }
     }
 
@@ -224,6 +229,15 @@ public class SoldierCombat : Soldier
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(transform.position, soldierSO.Range);
+    }
+
+    private void OnDestroy()
+    {
+        if (healthBarInstance != null)
+        {
+            Destroy(healthBarInstance.gameObject);
+        }
+
     }
 
 }
