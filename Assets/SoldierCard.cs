@@ -53,7 +53,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isPlacing) return;
 
         placingSoldierPrefab = (SoldierCombat)Instantiate(soldierPrefab);
-        placingSoldierPrefab.GetComponent<Collider>().enabled = false;
+        placingSoldierPrefab.GetComponent<Collider>().isTrigger = true;
         placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);    
 
         isPlacing = true;
@@ -62,7 +62,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void PlaceSoldier()
     {
-        Soldier soldier = Instantiate(soldierPrefab, placingSoldierPrefab.transform.position, Quaternion.identity);
+        SoldierCombat soldier = (SoldierCombat)Instantiate(soldierPrefab, placingSoldierPrefab.transform.position, Quaternion.identity);
 
         //COST belirleme
         //soldier.GetComponent<SoldierCombat>().owner.GetComponent<Lord>().AddGold(-20);
