@@ -35,12 +35,6 @@ public class Lord : MonoBehaviour, ICombat
     {
         currentHp -= damageAmount;
         healthBarUI.TakeDamage(currentHp);
-    }
-
-    public void TakeDamage(float damageAmount, Vector3 pos)
-    {
-        TakeDamage(damageAmount);
-        Vector3 closestPoint = GetComponent<Collider>().ClosestPoint(pos);
-        Destroy(Instantiate(stoneHitEffect, closestPoint, Quaternion.identity), .75f);
+        Destroy(Instantiate(stoneHitEffect, transform.position, Quaternion.identity), .75f);
     }
 }

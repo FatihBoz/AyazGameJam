@@ -28,6 +28,10 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     SoldierSO GetSoldierToTransform()
     {
+        if (soldierListCanTransform.Count <= 0)
+        {
+            return null;
+        }
         int r = Random.Range(0, soldierListCanTransform.Count);
         return soldierListCanTransform[r];
     }

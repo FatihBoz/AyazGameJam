@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2084,6 +2084,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8488131548212401529, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8488131548212401529, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldierListCanTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

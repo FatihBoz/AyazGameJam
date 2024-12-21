@@ -7,6 +7,11 @@ public class SoldierTranformation : MonoBehaviour
 
     public Soldier GetRandomSoldierToTransform()
     {
+        if (soldiersToTransform.Count <= 0)
+        {
+            return null;
+        }
+
         int r = Random.Range(0, soldiersToTransform.Count);
 
         if (soldiersToTransform[r] == null)

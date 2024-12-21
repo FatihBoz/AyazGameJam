@@ -143,17 +143,9 @@ public class SoldierCombat : Soldier , ICombat
 
 
 
-    public void TakeDamage(float damageAmount, Vector3 pos)
-    {
-        TakeDamage(damageAmount);
-    }
-
-
-
     private IEnumerator DieAndDelayedRevive(float delayTime)
     {
         anim.DieAnimation();
-        Destroy(healthBarInstance);
         GameObject obj = Instantiate(dyingEffect, transform.position + effectOffSet, dyingEffect.transform.rotation);
 
         yield return new WaitForSeconds(delayTime);
@@ -229,7 +221,7 @@ public class SoldierCombat : Soldier , ICombat
     {
         if (currentTarget.TryGetComponent<ICombat>(out var enemy))
         {
-            enemy.TakeDamage(soldierSO.AttackDamage,transform.position);
+            enemy.TakeDamage(soldierSO.AttackDamage);
         }
     }
 
