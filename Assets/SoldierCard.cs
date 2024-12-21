@@ -63,8 +63,12 @@ public class SoldierCard : MinerCard, IPointerDownHandler, IPointerUpHandler
             soldier.owner.GetComponent<Lord>().AddGold(-soldier.SoldierCost);   
             UIUpdater.instance.UpdateSource();
 
+            
             soldier.RangePrefab.SetActive(false);
+        
+        
         }
+
 
 
         Destroy(placingSoldierPrefab.gameObject);
