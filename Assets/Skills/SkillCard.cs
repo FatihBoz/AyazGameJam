@@ -1,11 +1,15 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    //public GameObject Effect;
+    public GameObject DamageArea;
 
-    public GameObject virtualPrefab;
+    GameObject instantiatedPrefab;
+
+    public GameObject Prefab;
 
     private Camera mainCam;
 
@@ -15,9 +19,20 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public LayerMask groundLayer;
 
+
+
+    //[Header("CountDown")]
+    //public float cooldownDuration = 5f; // Geri sayým süresi (saniye cinsinden)
+    //private float cooldownTimer = 0f;
+    //private bool isCooldown = false;
+
+    public TextMeshProUGUI cooldownText;
+
     private void Awake()
     {
         mainCam = Camera.main;
+        DamageArea = Instantiate(DamageArea, worldPosition, DamageArea.transform.rotation);
+
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
@@ -28,9 +43,9 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         mousePosition.z = Mathf.Abs(mainCam.transform.position.z); // Z eksenini ayarla
 
         worldPosition = mainCam.ScreenToWorldPoint(mousePosition);
-
-        virtualPrefab = Instantiate(virtualPrefab, worldPosition, Quaternion.identity);
-        virtualPrefab.GetComponent<ParticleSystem>().Stop();
+        DamageArea.SetActive(true);
+        instantiatedPrefab = Instantiate(Prefab, worldPosition, Quaternion.identity);
+        instantiatedPrefab.GetComponent<ParticleSystem>().Stop();
 
 
         //virtualPrefab.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
@@ -38,40 +53,55 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        if (virtualPrefab != null)
+        if (instantiatedPrefab != null)
         {
+            DamageArea.GetComponent<DamageArea>().ApplyEffect();
 
-            virtualPrefab.GetComponent<ParticleSystem>().Play();
+            DamageArea.SetActive(false);
+
+            instantiatedPrefab.GetComponent<ParticleSystem>().Play();
             isPlacing=false;
-            // Mouse pozisyonunu tekrar al ve instantiate et
-            //Vector3 mousePosition = Input.mousePosition;
-            //mousePosition.z = Mathf.Abs(mainCam.transform.position.z); // Z eksenini ayarla
 
-            //Vector3 worldPosition = mainCam.ScreenToWorldPoint(mousePosition);
-
-            // Sanal objeyi sil ve gerçek objeyi oluþtur
-            //Destroy(virtualPrefab);
-            //Instantiate(Effect, worldPosition, Quaternion.identity);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+
+
         if (isPlacing && Input.GetMouseButton(0))
         {
             Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
             {
-                virtualPrefab.transform.position = hit.point;
+                instantiatedPrefab.transform.position = hit.point;
+                DamageArea.transform.position = hit.point;
+
             }
         }
+
+        /*
+        if (isCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+
+            if (cooldownText != null)
+            {
+                cooldownText.text = Mathf.Ceil(cooldownTimer).ToString(); // UI'da geri sayýmý göster
+            }
+
+            if (cooldownTimer <= 0f)
+            {
+                isCooldown = false;
+                if (cooldownText != null)
+                {
+                    cooldownText.text = "Ready!";
+                }
+            }
+        }
+        */
     }
 }
