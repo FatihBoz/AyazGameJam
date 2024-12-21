@@ -12,6 +12,7 @@ public class SoldierSO : ScriptableObject
     [SerializeField] private float maxHp;
     [SerializeField] private float cost;
     [SerializeField] private AudioClip attackAudio;
+    [SerializeField] private Sprite nextImageSprite;
 
     public AudioClip attackAudioClip { get => attackAudio; }
     public float Cost { get => cost; }
@@ -22,4 +23,5 @@ public class SoldierSO : ScriptableObject
     public float DetectionRange { get => detectionRange; }
     public Soldier SoldierPrefab { get => soldierPrefab;}
     public float MaxHp { get => maxHp;}
+    public Sprite NextImageSprite { get => nextImageSprite; }
 }
