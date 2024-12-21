@@ -231,7 +231,21 @@ public class SoldierCombat : Soldier , ICombat
             enemy.TakeDamage(soldierSO.AttackDamage);
         }
 
-        audioSource.Play();
+        if(soldierSO.AttackDamage == 8)
+        {
+            if(gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
+            {
+                RangedSoldier.Shoot(currentTarget);
+
+            }
+        }
+
+
+        
+        if(audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     public void ChangeMaterial(Material material)
