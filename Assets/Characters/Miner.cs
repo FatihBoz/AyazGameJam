@@ -7,7 +7,7 @@ public class Miner : MonoBehaviour
     private bool isInMine = false; // Madende mi?
     private float goldPerSecond = 1f; // Her saniye kazanýlan altýn
     private float mineTime = 3f; // Madende bekleme süresi
-    private float detectionRadius = 10f; // Maden arama mesafesi
+    float detectionRadius = 50f; // Maden arama mesafesi
 
     private Transform targetMine; // Hedef maden
     private bool hasGold = false; // Altýn toplandý mý?
