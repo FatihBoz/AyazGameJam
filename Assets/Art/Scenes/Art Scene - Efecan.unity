@@ -7036,7 +7036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 800, y: -425}
+  m_AnchoredPosition: {x: 665.14, y: -368.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1096836263
@@ -16055,6 +16055,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rangeIndicatorExpandRate: 1.5
+  healthBarPrefab: {fileID: 0}
+  healthBarOffset: {x: 0, y: 0, z: 0}
+  healthBarXRotationOffSet: -45
   dyingEffect: {fileID: 0}
   bloodEffect: {fileID: 0}
   effectDestroyTime: 1
@@ -16782,6 +16785,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rangeIndicatorExpandRate: 1.5
+  healthBarPrefab: {fileID: 0}
+  healthBarOffset: {x: 0, y: 0, z: 0}
+  healthBarXRotationOffSet: -45
   dyingEffect: {fileID: 0}
   bloodEffect: {fileID: 0}
   effectDestroyTime: 1
@@ -28829,6 +28835,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rangeIndicatorExpandRate: 1.5
+  healthBarPrefab: {fileID: 0}
+  healthBarOffset: {x: 0, y: 0, z: 0}
+  healthBarXRotationOffSet: -45
   dyingEffect: {fileID: 0}
   bloodEffect: {fileID: 0}
   effectDestroyTime: 1
