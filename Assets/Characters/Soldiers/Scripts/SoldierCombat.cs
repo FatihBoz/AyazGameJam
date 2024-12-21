@@ -5,10 +5,25 @@ using UnityEngine.AI;
 
 public class SoldierCombat : Soldier
 {
+    [Header("*** Health Bar ***")]
+    [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private Vector3 healthBarOffset;
+    [SerializeField] private float healthBarXRotationOffSet = -45f;
+    private HealthBarUI healthBarInstance;
+
+    [Header("*** VFX ***")]
+    [SerializeField] private GameObject dyingEffect;
+    [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private float effectDestroyTime = 1f;
+    [SerializeField] private Vector3 effectOffSet;
+
+    [Header("*** OTHER ***")]
+
     public Lord owner;
     public NavMeshAgent agent;
 
     [SerializeField] private SkinnedMeshRenderer meshRenderer;
+
 
     GameObject targetTower;
     public LayerMask enemyLayer;
@@ -26,13 +41,14 @@ public class SoldierCombat : Soldier
     protected override void Awake()
     {
         base.Awake();
+        InstantiateHealthBar();
         currentHp = soldierSO.MaxHp;
         anim = GetComponent<ISoldierAnimation>();
+        
     }
 
     void Start()
     {
-        //ikincil asker iþlemlerini burada yap
         owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
 
 
@@ -43,11 +59,30 @@ public class SoldierCombat : Soldier
             print("target tower null deðil");
             MoveToPos(targetTower.transform.position);
         }
+
         
     }
 
+
+    #region UI
+    public void InstantiateHealthBar()
+    {
+        healthBarInstance = Instantiate(healthBarPrefab, transform.position + healthBarOffset, Quaternion.identity).GetComponent<HealthBarUI>();
+
+        healthBarInstance.relatedSoldier = this;
+        GameObject soldierCanvas = GameObject.Find("SoldierCanvas");
+        healthBarInstance.transform.SetParent(soldierCanvas.transform);
+    }
+
+    #endregion UI
+
     void Update()
     {
+        if (healthBarInstance != null)
+        {
+            print("HP BAR INSTANCE NULL DEÐÝL "+healthBarInstance.name);
+            
+        }
         CheckForEnemies();
 
         if (currentTarget != null)
@@ -55,7 +90,6 @@ public class SoldierCombat : Soldier
             // Düþman saldýrý menzilinde ise saldýr
             if (soldierSO.Range >= Vector3.Distance(currentTarget.position, gameObject.transform.position))
             {
-                print("attack anim");
                 anim.AttackAnimation();
                 agent.isStopped = true;
 
@@ -79,25 +113,36 @@ public class SoldierCombat : Soldier
 
         transform.LookAt(currentTarget);
         print("current target:"+currentTarget.name);
+
+        healthBarInstance.gameObject.transform.SetPositionAndRotation(transform.position + healthBarOffset, Quaternion.Euler(healthBarXRotationOffSet, 0, 0));
     }
 
 
     public void TakeDamage(float damage)
     {
+        if (currentHp <= 0)
+            return;
+
+
         currentHp -= damage;
+        healthBarInstance.TakeDamage(currentHp);
+        Destroy(Instantiate(bloodEffect, transform.position + effectOffSet, bloodEffect.transform.rotation), effectDestroyTime);
+
         if (currentHp <= 0)
         {
-            StartCoroutine(DieAndDelayedRevive(1));
+            StartCoroutine(DieAndDelayedRevive(effectDestroyTime));
         }
     }
 
     private IEnumerator DieAndDelayedRevive(float delayTime)
     {
         anim.DieAnimation();
+        Destroy(healthBarInstance);
+        GameObject obj = Instantiate(dyingEffect, transform.position + effectOffSet, dyingEffect.transform.rotation);
 
         yield return new WaitForSeconds(delayTime);
-
-        //Instantiate Revive effect
+        
+        Destroy(obj);
         if (canRevive && soldierToTransform != null)
         {
             Soldier soldier = Instantiate(soldierToTransform, transform.position, transform.rotation);
@@ -161,14 +206,12 @@ public class SoldierCombat : Soldier
         currentTarget = null;
     }
 
-    private void Attack()
+    private void Attack() // with animation event
     {
         if (currentTarget.TryGetComponent<SoldierCombat>(out var enemy))
         {
             enemy.TakeDamage(soldierSO.AttackDamage);
         }
-        
-       
     }
 
     public void ChangeMaterial(Material material)
@@ -182,4 +225,5 @@ public class SoldierCombat : Soldier
 
         Gizmos.DrawWireSphere(transform.position, soldierSO.Range);
     }
+
 }

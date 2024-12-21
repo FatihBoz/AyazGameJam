@@ -723,6 +723,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rangeIndicatorExpandRate: 0
+  healthBarPrefab: {fileID: 4516639316002204741, guid: f80f96c972b5e3041bbfbe1fbce8869b,
+    type: 3}
+  healthBarOffset: {x: 0, y: 3.1, z: 0}
+  healthBarXRotationOffSet: -45
+  dyingEffect: {fileID: 5970241725988088956, guid: 5193bbbca9d086346a7eb902996ca39e,
+    type: 3}
+  bloodEffect: {fileID: 2165260561057509999, guid: 009ffed490f364941944ef44c70c3587,
+    type: 3}
+  effectDestroyTime: 1
+  effectOffSet: {x: 0, y: 1.3, z: 0}
   owner: {fileID: 0}
   agent: {fileID: 3540400599989434465}
   meshRenderer: {fileID: 0}

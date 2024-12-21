@@ -11,7 +11,9 @@ public class SoldierSO : ScriptableObject
     [SerializeField] private float detectionRange;
     [SerializeField] private float maxHp;
     [SerializeField] private float cost;
+    [SerializeField] private AudioClip attackAudio;
 
+    public AudioClip attackAudioClip;
     public float Cost { get => cost; }
     public float AttackDamage { get => attackDamage;}
     public float AttackSpeed { get => attackSpeed; }
