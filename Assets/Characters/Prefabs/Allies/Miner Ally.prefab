@@ -185,9 +185,9 @@ MonoBehaviour:
     type: 3}
   healthBarOffset: {x: 0, y: 2.5, z: 0}
   healthBarXRotationOffSet: 0
-  dyingEffect: {fileID: 440273542176214765, guid: e7a1cd905d35cf34581aa85456fdb55b,
+  dyingEffect: {fileID: 5970241725988088956, guid: 5193bbbca9d086346a7eb902996ca39e,
     type: 3}
-  bloodEffect: {fileID: 5970241725988088956, guid: 5193bbbca9d086346a7eb902996ca39e,
+  bloodEffect: {fileID: 440273542176214765, guid: e7a1cd905d35cf34581aa85456fdb55b,
     type: 3}
   effectDestroyTime: 1
   effectOffSet: {x: 0, y: 0.5, z: 0}
