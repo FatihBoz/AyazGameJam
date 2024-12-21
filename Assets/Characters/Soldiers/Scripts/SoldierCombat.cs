@@ -38,11 +38,13 @@ public class SoldierCombat : Soldier , ICombat
     private ISoldierAnimation anim;
     AudioSource audioSource;
 
-
+    private NavMeshObstacle obstacle;
 
     protected override void Awake()
     {
         base.Awake();
+        obstacle = GetComponent<NavMeshObstacle>();
+
         InstantiateHealthBar();
         currentHp = soldierSO.MaxHp;
         anim = GetComponent<ISoldierAnimation>();
@@ -80,10 +82,17 @@ public class SoldierCombat : Soldier , ICombat
 
     void Update()
     {
-        CheckForEnemies();
+        UpdateHealthBarPosition();
+
+        if (currentTarget == null)
+        {
+            CheckForEnemies();
+        }
+
 
         if (currentTarget != null)
         {
+            RotateToTarget();
             // Düþman saldýrý menzilinde ise saldýr
             if (soldierSO.Range >= Vector3.Distance(currentTarget.position, gameObject.transform.position))
             {
@@ -99,6 +108,7 @@ public class SoldierCombat : Soldier , ICombat
             {
                 if (agent.isActiveAndEnabled)
                 {
+
                     print("targeta giriyor :"+currentTarget.name);
                     MoveToPos(currentTarget.transform.position);
                 }
@@ -111,24 +121,46 @@ public class SoldierCombat : Soldier , ICombat
             {
                 if (agent.isActiveAndEnabled)
                 {
+                    print("yürüme yönü");
                     agent.isStopped = false;
-
+                    RotateToMoveDirection();
                     MoveToPos(targetTower.transform.position);
-                    SetEnemyTarget(targetTower.transform);
                 }
             }
             
         }
 
-        if (currentTarget != null)
-        {
-            transform.LookAt(currentTarget);
-
-            transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
-        }
+        CheckIfTargetIsInRange();
+    }
 
 
+    void UpdateHealthBarPosition()
+    {
         healthBarInstance.gameObject.transform.SetPositionAndRotation(transform.position + healthBarOffset, Quaternion.Euler(healthBarXRotationOffSet, 0, 0));
+    }
+
+    void RotateToMoveDirection()
+    {
+        Vector3 moveDir = agent.velocity.normalized;
+
+
+        if (moveDir != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.Euler(0, targetRotation.eulerAngles.y, 0),
+                Time.deltaTime * 5f
+            );
+        }
+    }
+
+    void RotateToTarget()
+    {
+        transform.LookAt(currentTarget);
+
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
     }
 
 
@@ -182,7 +214,6 @@ public class SoldierCombat : Soldier , ICombat
 
         if (enemiesInRange.Length > 0)
         {
-            // En yakýn düþmaný hedefle
             closestTarget = FindClosestEnemy(enemiesInRange);
             SetEnemyTarget(closestTarget);
             if (agent.isActiveAndEnabled)
@@ -213,6 +244,17 @@ public class SoldierCombat : Soldier , ICombat
         return closestEnemy;
     }
 
+    void CheckIfTargetIsInRange()
+    {
+        if (currentTarget == null)
+            return;
+
+        if (Vector3.Distance(currentTarget.position, transform.position) > soldierSO.Range)
+        {
+            currentTarget = null;
+        }
+    }
+
 
     public void SetEnemyTarget(Transform enemy)
     {
@@ -226,6 +268,9 @@ public class SoldierCombat : Soldier , ICombat
 
     private void Attack() // with animation event
     {
+        if (currentTarget == null)
+            return;
+
         if (soldierSO.AttackDamage == 8)
         {
             if (gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
