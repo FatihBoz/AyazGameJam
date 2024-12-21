@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Miner : MonoBehaviour
+public class Miner : MonoBehaviour, IMiner
 {
     private bool isInMine = false; // Madende mi?
     private float goldPerSecond = 1f; // Her saniye kazanýlan altýn
@@ -21,7 +21,10 @@ public class Miner : MonoBehaviour
     private NavMeshAgent agent;
     private Renderer minerRenderer; // Görünmez yapmak için
 
+
     AudioSource audioSource;
+
+    public Lord Owner { get => owner;}
 
     private void Awake()
     {
@@ -87,7 +90,7 @@ public class Miner : MonoBehaviour
         }
         if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
         {
-            owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
+            Owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
             hasGold = false; // Altýn býrakýldý
             print("Deployed GOld");
         }
@@ -115,5 +118,15 @@ public class Miner : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    public void MakeHealthBarInactive()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void MakeHealthBarActive()
+    {
+        throw new System.NotImplementedException();
     }
 }

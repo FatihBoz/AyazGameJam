@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 2967757991979522072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7047174524788610287}
@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Top: -224
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 21.5
+  m_Spacing: -15
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -226,17 +226,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6aad611dd04e9e4c855db1249b73dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierListCanTransform:
-  - {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce, type: 2}
-  - {fileID: 11400000, guid: 34ea8c5b0d439e945a0e082b1c71cf28, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  soldierPrefab: {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63,
-    type: 3}
+  minerPrefab: {fileID: 0}
   placingSoldierMaterial: {fileID: 2100000, guid: fcb29826e4f03d74bbecec006ec4320c,
     type: 2}
   offSet: {x: 0, y: 0.9, z: 0}
+  soldierListCanTransform:
+  - {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce, type: 2}
+  - {fileID: 11400000, guid: 34ea8c5b0d439e945a0e082b1c71cf28, type: 2}
+  soldierPrefab: {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63,
+    type: 3}
 --- !u!224 &7047174524788610287 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6994195884850188227, guid: ef9c6c255b00a4840b5df3a4f29e0384,
@@ -409,17 +410,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6aad611dd04e9e4c855db1249b73dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierListCanTransform:
-  - {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e, type: 2}
-  - {fileID: 11400000, guid: 34ea8c5b0d439e945a0e082b1c71cf28, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  soldierPrefab: {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca,
-    type: 3}
+  minerPrefab: {fileID: 0}
   placingSoldierMaterial: {fileID: 2100000, guid: fcb29826e4f03d74bbecec006ec4320c,
     type: 2}
   offSet: {x: 0, y: 0, z: 0}
+  soldierListCanTransform:
+  - {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e, type: 2}
+  - {fileID: 11400000, guid: 34ea8c5b0d439e945a0e082b1c71cf28, type: 2}
+  soldierPrefab: {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca,
+    type: 3}
 --- !u!224 &7126389977550474876 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6994195884850188227, guid: ef9c6c255b00a4840b5df3a4f29e0384,
@@ -592,17 +594,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6aad611dd04e9e4c855db1249b73dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierListCanTransform:
-  - {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e, type: 2}
-  - {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  soldierPrefab: {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23,
-    type: 3}
+  minerPrefab: {fileID: 0}
   placingSoldierMaterial: {fileID: 2100000, guid: fcb29826e4f03d74bbecec006ec4320c,
     type: 2}
   offSet: {x: 0, y: 0.5, z: 0}
+  soldierListCanTransform:
+  - {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e, type: 2}
+  - {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce, type: 2}
+  soldierPrefab: {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23,
+    type: 3}
 --- !u!224 &6135669755383601065 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6994195884850188227, guid: ef9c6c255b00a4840b5df3a4f29e0384,
@@ -755,7 +758,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3082672687955233259, guid: ef9c6c255b00a4840b5df3a4f29e0384,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8488131548212401529}
+      addedObject: {fileID: 6134099511718985241}
   m_SourcePrefab: {fileID: 100100000, guid: ef9c6c255b00a4840b5df3a4f29e0384, type: 3}
 --- !u!224 &2271499239973535280 stripped
 RectTransform:
@@ -769,7 +772,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9121368829972165107}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8488131548212401529
+--- !u!114 &6134099511718985241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -778,17 +781,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6075996799650330648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6aad611dd04e9e4c855db1249b73dd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 24ee55beb61d0534c925e992f6738e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soldierListCanTransform:
-  - {fileID: 11400000, guid: 21988d0112c370c44ad5ac9d882a145e, type: 2}
-  - {fileID: 11400000, guid: 222f0f6f5ff55424cb003e9197b19dce, type: 2}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  soldierPrefab: {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23,
+  minerPrefab: {fileID: 412905302697349166, guid: be6cd9af44f55ed43b224eb81fbd1d48,
     type: 3}
   placingSoldierMaterial: {fileID: 2100000, guid: fcb29826e4f03d74bbecec006ec4320c,
     type: 2}
-  offSet: {x: 0, y: 0.5, z: 0}
+  offSet: {x: 0, y: 1, z: 0}

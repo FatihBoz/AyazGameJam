@@ -181,8 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
-  healthBarPrefab: {fileID: 0}
-  healthBarOffset: {x: 0, y: 0, z: 0}
+  healthBarPrefab: {fileID: 2465280660251491880, guid: d081efb1f541a124b9974a2a874278f1,
+    type: 3}
+  healthBarOffset: {x: 0, y: 2.5, z: 0}
   healthBarXRotationOffSet: 0
   dyingEffect: {fileID: 440273542176214765, guid: e7a1cd905d35cf34581aa85456fdb55b,
     type: 3}
@@ -191,5 +192,6 @@ MonoBehaviour:
   effectDestroyTime: 1
   effectOffSet: {x: 0, y: 0.5, z: 0}
   owner: {fileID: 0}
-  meshRenderer: {fileID: 0}
-  OwnerTagNameOfCastle: 
+  Cost: 50
+  meshRenderer: {fileID: 7783575644833817902}
+  OwnerTagNameOfCastle: AllyCastle

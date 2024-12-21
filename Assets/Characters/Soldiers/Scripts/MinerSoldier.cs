@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using static UnityEngine.UI.GridLayoutGroup;
 
 public class MinerSoldier : MonoBehaviour, ICombat
 {
@@ -24,11 +19,10 @@ public class MinerSoldier : MonoBehaviour, ICombat
     [Header("*** OTHER ***")]
 
     public Lord owner;
-
-    [SerializeField] private SkinnedMeshRenderer meshRenderer;
+    public float Cost = 50f;
+    public MeshRenderer meshRenderer;
 
     public string OwnerTagNameOfCastle;
-
 
     private float currentHp;
     private Animator animator;
@@ -36,13 +30,19 @@ public class MinerSoldier : MonoBehaviour, ICombat
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
     }
 
     private void Start()
     {
         InstantiateHealthBar();
         currentHp = maxHp;
-        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
+
+    }
+
+    private void Update()
+    {
+        healthBarInstance.gameObject.transform.SetPositionAndRotation(transform.position + healthBarOffset, Quaternion.Euler(healthBarXRotationOffSet, 0, 0));
     }
 
     public void InstantiateHealthBar()

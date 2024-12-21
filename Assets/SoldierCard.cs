@@ -3,25 +3,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class SoldierCard : MinerCard, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private List<SoldierSO> soldierListCanTransform;
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Soldier soldierPrefab;
-    [SerializeField] private Material placingSoldierMaterial;
 
-    [SerializeField] private Vector3 offSet;
 
-    private Camera mainCam;
-    private bool isPlacing;
     private SoldierCombat placingSoldierPrefab;
     private SoldierSO soldierToTransform;
-    private bool canPlace = true;
 
 
-    private void Awake()
+
+    protected override void Awake()
     {
-        mainCam = Camera.main;
+        base.Awake();
         soldierToTransform = GetSoldierToTransform();
     }
 
@@ -37,23 +32,9 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (!isPlacing) return;
-
-        PlaceSoldier();
-    }
 
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (isPlacing) return;
-
-        StartPlacingSoldier();
-    }
-
-
-    void StartPlacingSoldier()
+    protected override void StartPlacingSoldier()
     {
         if (isPlacing) return;
 
@@ -68,7 +49,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         Cursor.visible = false; 
     }
 
-    void PlaceSoldier()
+    protected override void PlaceSoldier()
     {
         if (canPlace)
         {
@@ -95,13 +76,12 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         placingSoldierPrefab.GetComponent<Collider>().enabled = false;
         Destroy(placingSoldierPrefab.GetComponent<Rigidbody>());
         placingSoldierPrefab.GetComponent<NavMeshAgent>().enabled = false;
-        placingSoldierPrefab.GetComponent<Animator>().enabled = false;
         placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);
 
     }
 
 
-    private void Update()
+    protected override void Update()
     {
         if (isPlacing && Input.GetMouseButton(0))
         {
