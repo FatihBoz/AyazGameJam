@@ -1186,6 +1186,7 @@ MonoBehaviour:
     m_Bits: 256
   owner: {fileID: 0}
   agent: {fileID: 7039745650543254457}
+  meshRenderer: {fileID: 8281072708880079765}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

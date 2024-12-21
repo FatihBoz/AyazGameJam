@@ -5,8 +5,10 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class SoldierCombat : Soldier
 {
     public Lord owner;
-
     public NavMeshAgent agent;
+
+    [SerializeField] private SkinnedMeshRenderer meshRenderer;
+
     GameObject targetTower;
     public LayerMask enemyLayer;
     private Transform currentEnemyTarget;
@@ -155,5 +157,10 @@ public class SoldierCombat : Soldier
         anim.AttackAnimation();
 
         Debug.Log($"{gameObject.name} is attacking {currentEnemyTarget.name}!");
+    }
+
+    public void ChangeMaterial(Material material)
+    {
+        meshRenderer.material = material;
     }
 }

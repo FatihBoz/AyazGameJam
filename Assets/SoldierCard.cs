@@ -7,11 +7,13 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private List<SoldierSO> soldierListCanTransform;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Soldier soldierPrefab;
+    [SerializeField] private Material placingSoldierMaterial;
+
+    [SerializeField] private Vector3 offSet;
 
     private Camera mainCam;
     private bool isPlacing;
-    private Vector3 offSet = new(0f,.9f,0f);
-    private GameObject placingPrefab;
+    private SoldierCombat placingSoldierPrefab;
     private SoldierSO soldierToTransform;
 
 
@@ -50,8 +52,9 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (isPlacing) return;
 
-        placingPrefab = Instantiate(soldierPrefab.gameObject);
-        placingPrefab.GetComponent<Collider>().enabled = false;
+        placingSoldierPrefab = (SoldierCombat)Instantiate(soldierPrefab);
+        placingSoldierPrefab.GetComponent<Collider>().enabled = false;
+        placingSoldierPrefab.ChangeMaterial(placingSoldierMaterial);
 
         isPlacing = true;
         Cursor.visible = false; 
@@ -59,7 +62,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void PlaceSoldier()
     {
-        Soldier soldier = Instantiate(soldierPrefab, placingPrefab.transform.position, Quaternion.identity);
+        Soldier soldier = Instantiate(soldierPrefab, placingSoldierPrefab.transform.position, Quaternion.identity);
 
         //COST belirleme
         //soldier.GetComponent<SoldierCombat>().owner.GetComponent<Lord>().AddGold(-20);
@@ -67,7 +70,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         soldier.SetSoldierToTransform(soldierToTransform);
         soldier.RangePrefab.SetActive(false);
-        Destroy(placingPrefab);
+        Destroy(placingSoldierPrefab.gameObject);
 
         isPlacing = false;
         Cursor.visible = true;
@@ -82,7 +85,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
             {
-                placingPrefab.transform.position = hit.point + offSet;
+                placingSoldierPrefab.transform.position = hit.point + offSet;
             }
         }
     }
