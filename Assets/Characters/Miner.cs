@@ -37,7 +37,6 @@ public class Miner : MonoBehaviour
     {
         if (isInMine) return;
 
-        Debug.Log("Miner Tagi : " + OwnerTagNameOfCastle);
 
 
         if (hasGold)
@@ -47,7 +46,6 @@ public class Miner : MonoBehaviour
         else
         {
             FindClosestMine();
-            print("Madennnn : " + targetMine.gameObject);
 
             if (targetMine != null)
             {
@@ -82,7 +80,6 @@ public class Miner : MonoBehaviour
 
             StartCoroutine(MineGold(other.GetComponent<Mine>()));
         }
-        print("Biþeyin içindeyizz aloo");
         if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
         {
             owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
@@ -94,7 +91,6 @@ public class Miner : MonoBehaviour
     private IEnumerator MineGold(Mine mine)
     {
         yield return new WaitForSeconds(mineTime); // Madende bekle
-
         isInMine = false;
         hasGold = true;
         minerRenderer.enabled = true; // Görünür yap

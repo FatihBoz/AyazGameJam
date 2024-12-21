@@ -1,54 +1,58 @@
+using TMPro;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-    public int allyMinerCount;
-    public int enemyMinerCount;
+    int allyMinerCount;
+    int enemyMinerCount;
 
-    public LayerMask allyLayer;
-    public LayerMask enemyLayer;
+    public TextMeshProUGUI allyCount;
+
+    public TextMeshProUGUI enemyCount;
+
+    public string allyLayer;
+    public string enemyLayer;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Miner"))
+
+        if (other.gameObject.layer == LayerMask.NameToLayer(allyLayer))
         {
-            Miner miner = other.GetComponent<Miner>();
+            allyMinerCount++;
+            print("dost madenci girdiiii: " + allyMinerCount);
 
-            if (miner != null)
-            {
-                if (miner.OwnerTagNameOfCastle == "AllyCastle")
-                {
-                    allyMinerCount++;
-                }
-                else
-                {
-                    enemyMinerCount++;
-                }
-
-                GetComponent<MineUIUpdater>().UpdateMinerCounts();
-            }
         }
+        else if(other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
+        {
+            enemyMinerCount++;
+        }
+
+        UpdateMinerCounts();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Miner"))
+        print("dost madenci Çýkýyo: " + allyMinerCount);
+
+        if (other.gameObject.layer == LayerMask.NameToLayer(allyLayer))
         {
-            Miner miner = other.GetComponent<Miner>();
+            allyMinerCount--;
+            print("dost madenci Ç: " + allyMinerCount);
 
-            if (miner != null)
-            {
-                if (miner.OwnerTagNameOfCastle == "AllyCastle")
-                {
-                    allyMinerCount--;
-                }
-                else
-                {
-                    enemyMinerCount--;
-                }
-
-                GetComponent<MineUIUpdater>().UpdateMinerCounts();
-            }
         }
+        else if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
+        {
+            enemyMinerCount--;
+        }
+
+        UpdateMinerCounts();
+
+    }
+
+
+    public void UpdateMinerCounts()
+    {
+        allyCount.text = allyMinerCount.ToString();
+        enemyCount.text = enemyMinerCount.ToString();
     }
 }
