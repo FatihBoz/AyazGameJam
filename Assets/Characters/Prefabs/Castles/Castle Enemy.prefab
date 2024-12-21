@@ -118,7 +118,7 @@ MonoBehaviour:
   isUnderAttack: 0
   requiredGold: 100
   requiredGoldForMiner: 50
-  miner: {fileID: 7770615180923842711, guid: 17ebecc58793cc043adf4ee1e22ec02b, type: 3}
+  miner: {fileID: 8030922940502791339, guid: 57403bef85dd67b47a0ec4c5c9e470db, type: 3}
   minerPoint: {fileID: 0}
   enemySpawns:
   - {fileID: 0}

@@ -99,7 +99,6 @@ public class Miner : MonoBehaviour
 
     private void MoveToPos(Vector3 pos)
     {
-        print(pos);
         agent.SetDestination(pos);
         agent.stoppingDistance = 1f;
     }

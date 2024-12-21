@@ -19,8 +19,6 @@ public class Mine : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer(allyLayer))
         {
             allyMinerCount++;
-            print("dost madenci girdiiii: " + allyMinerCount);
-
         }
         else if(other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
         {

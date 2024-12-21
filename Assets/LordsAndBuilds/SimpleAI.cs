@@ -15,9 +15,6 @@ public class SimpleAI : MonoBehaviour
     //public float enemyAttackPower = 0;
 
     [Header("Prefabs")]
-    //public GameObject giant;
-    //public GameObject shooterFly;
-    //public GameObject meleeFly;
     public GameObject miner;
 
     [Header("Spawn Points")]
@@ -144,7 +141,7 @@ public class SimpleAI : MonoBehaviour
 
     bool hasEnoughMiner()
     {
-        if (GetComponent<Lord>().currentMinerCount < idealMinerCount)
+        if (GetComponent<Lord>().currentMinerCount >= idealMinerCount)
         {
             return true;
         }
