@@ -8,7 +8,8 @@ public class Miner : MonoBehaviour
     private float goldPerSecond = 1f; // Her saniye kazanýlan altýn
     private float mineTime = 3f; // Madende bekleme süresi
     float detectionRadius = 50f; // Maden arama mesafesi
-
+    float goldamount = 30;
+    
     private Transform targetMine; // Hedef maden
     private bool hasGold = false; // Altýn toplandý mý?
 
@@ -22,7 +23,6 @@ public class Miner : MonoBehaviour
     private Renderer minerRenderer; // Görünmez yapmak için
 
     private MinerSoldier minerSoldier;
-
 
     AudioSource audioSource;
 
@@ -92,8 +92,9 @@ public class Miner : MonoBehaviour
         }
         if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
         {
+            Owner.AddGold(goldamount); // Toplanan altýnlarý ekle
             UIUpdater.instance.UpdateSource();
-            Owner.AddGold(goldPerSecond * mineTime); // Toplanan altýnlarý ekle
+
             hasGold = false; // Altýn býrakýldý
             print("Deployed GOld");
         }
