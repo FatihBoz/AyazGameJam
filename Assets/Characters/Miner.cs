@@ -10,13 +10,13 @@ public class Miner : MonoBehaviour
 
     Lord owner;
 
-    public string TagNameOfCastle;
+    public string OwnerTagNameOfCastle;
 
     public float moveSpeed = 3f; // Madencinin hareket hýzý
 
     private void Start()
     {
-        owner = GameObject.FindWithTag(TagNameOfCastle).GetComponent<Lord>();
+        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
 
     }
 
