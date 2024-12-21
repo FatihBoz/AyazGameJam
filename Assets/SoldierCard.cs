@@ -41,9 +41,11 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        placementArea.DisableRect();
         if (!isPlacing) return;
 
         PlaceSoldier();
+        
     }
 
 
@@ -52,6 +54,7 @@ public class SoldierCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (isPlacing) return;
 
         StartPlacingSoldier();
+        placementArea.EnableRect();
     }
 
 
