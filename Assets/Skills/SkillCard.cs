@@ -32,7 +32,7 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         mainCam = Camera.main;
         DamageArea = Instantiate(DamageArea, worldPosition, DamageArea.transform.rotation);
-
+        DamageArea.SetActive(false);
     }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
