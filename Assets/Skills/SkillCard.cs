@@ -2,6 +2,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -19,12 +21,14 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public LayerMask groundLayer;
 
+    public Image skillUi;
 
+    bool canUse = true;
 
-    //[Header("CountDown")]
-    //public float cooldownDuration = 5f; // Geri sayým süresi (saniye cinsinden)
-    //private float cooldownTimer = 0f;
-    //private bool isCooldown = false;
+    [Header("CountDown")]
+    public float cooldownDuration = 10f; // Geri sayým süresi (saniye cinsinden)
+    private float cooldownTimer = 0f;
+    private bool isCooldown = false;
 
     public TextMeshProUGUI cooldownText;
 
@@ -37,7 +41,11 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
+
+        if (!canUse) { return; }
+
         isPlacing = true;
+
 
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = Mathf.Abs(mainCam.transform.position.z); // Z eksenini ayarla
@@ -53,9 +61,15 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
+        if(!canUse) { return; }
+
         if (instantiatedPrefab != null)
         {
             DamageArea.GetComponent<DamageArea>().ApplyEffect();
+            canUse = false;
+            skillUi.fillAmount = 0;
+            skillUi.DOFillAmount(1, cooldownDuration).OnComplete(()=> canUse = true);
+
 
             DamageArea.SetActive(false);
 
@@ -103,5 +117,6 @@ public class SkillCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             }
         }
         */
+        
     }
 }
