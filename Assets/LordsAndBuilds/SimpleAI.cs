@@ -23,6 +23,7 @@ public class SimpleAI : MonoBehaviour
 
     public GameObject[] soldiers;
 
+    public GameObject tempMiner;
 
     private float decisionInterval = 5f; // Karar verme aralýðý (5 saniye)
     private float lastDecisionTime = 0f; // Son karar zamaný
@@ -104,8 +105,8 @@ public class SimpleAI : MonoBehaviour
         Transform spawnPoint = minerSpawns[Random.Range(0, minerSpawns.Count)];
 
         // Askeri spawn et
-        Instantiate(miner, spawnPoint.position, spawnPoint.rotation);
-
+        tempMiner = Instantiate(miner, spawnPoint.position, spawnPoint.rotation);
+        tempMiner.GetComponent<Miner>().SpawnPoint = spawnPoint.position;
 
         //Cost'a eriþ
         //GetComponent<Lord>().AddGold(selectedSoldier.GetComponent<SoldierCombat>().soldierSO);
