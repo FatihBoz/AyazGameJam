@@ -27,6 +27,7 @@ public class Lord : MonoBehaviour, ICombat
 
     public void AddGold(float amount)
     {
+
         gold += (int)amount;
     }
 

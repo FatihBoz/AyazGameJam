@@ -53,7 +53,7 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         
 
-        if (placingMinerPrefab.gameObject.GetComponent<Miner>().Owner.GetComponent<Lord>().gold < placingMinerPrefab.Cost)
+        if (placingMinerPrefab.owner.GetComponent<Lord>().gold < placingMinerPrefab.Cost)
         {
             canPlace = false;
         }
@@ -70,7 +70,15 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             soldier.gameObject.GetComponent<Miner>().SpawnPoint = allyCastle.transform.position;
 
-            soldier.gameObject.GetComponent<Miner>().Owner.GetComponent<Lord>().AddGold(-soldier.Cost);
+            Lord lord = soldier.gameObject.GetComponent<Miner>().Owner.GetComponent<Lord>();
+
+            lord.AddGold(-soldier.Cost);
+
+            lord.currentMinerCount++;
+
+
+            print(lord.currentMinerCount);
+
             UIUpdater.instance.UpdateSource();
         }
 

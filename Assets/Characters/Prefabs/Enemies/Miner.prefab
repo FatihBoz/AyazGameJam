@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OwnerTagNameOfCastle: EnemyCastle
   moveSpeed: 3
+  SpawnPoint: {x: 0, y: 0, z: 0}
   farTeleportPointPosition: {x: 0, y: 0, z: 100}
 --- !u!195 &6541352452685876026
 NavMeshAgent:
@@ -290,6 +291,6 @@ MonoBehaviour:
   effectDestroyTime: 1
   effectOffSet: {x: 0, y: 0, z: 0}
   owner: {fileID: 0}
-  Cost: 50
+  Cost: 30
   meshRenderer: {fileID: 9011821147723049566}
   OwnerTagNameOfCastle: AllyCastle

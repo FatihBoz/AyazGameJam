@@ -2342,6 +2342,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 644404663}
     m_Modifications:
+    - target: {fileID: 585023827620129431, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: m_Text
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2271499239973535280, guid: 93681d4d380a18e4caa3383b7fe7702f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2366,6 +2371,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SoldierCards
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714336569521698176, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: m_Text
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003583028934034969, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: m_Text
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6108838463601760198, guid: 93681d4d380a18e4caa3383b7fe7702f,
         type: 3}
@@ -2531,6 +2546,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7661672455340066065, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: m_Text
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6546,7 +6566,7 @@ PrefabInstance:
     - target: {fileID: 822393835678740253, guid: bab88a55bbb4d4b408de7feb85a8e822,
         type: 3}
       propertyPath: gold
-      value: 5000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3740652881093387977, guid: bab88a55bbb4d4b408de7feb85a8e822,
         type: 3}

@@ -38,6 +38,10 @@ public class Miner : MonoBehaviour
 
     private void Awake()
     {
+
+        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
+        ownerGameObject = GameObject.FindWithTag(OwnerTagNameOfCastle);
+
         minerSoldier = GetComponent<MinerSoldier>();
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
@@ -52,8 +56,6 @@ public class Miner : MonoBehaviour
         }
 
 
-        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
-        ownerGameObject = GameObject.FindWithTag(OwnerTagNameOfCastle);
     }
 
     private void Update()

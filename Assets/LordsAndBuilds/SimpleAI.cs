@@ -98,7 +98,7 @@ public class SimpleAI : MonoBehaviour
     void ProduceMiner()
     {
 
-        if (minerSpawns.Count == 0)
+        if (minerSpawns.Count == 0 && GetComponent<Lord>().gold < 20)
             return; // Eðer spawn noktasý yoksa çýk.
 
         // Rastgele bir spawn noktasý seç
@@ -106,9 +106,13 @@ public class SimpleAI : MonoBehaviour
 
         // Askeri spawn et
         tempMiner = Instantiate(miner, spawnPoint.position, spawnPoint.rotation);
-        tempMiner.GetComponent<Miner>().SpawnPoint = spawnPoint.position;
 
-        tempMiner.GetComponent<Miner>().Owner.GetComponent<Lord>().currentMinerCount++;
+        Miner miner2 = tempMiner.GetComponent<Miner>();
+        miner2.SpawnPoint = spawnPoint.position;
+
+        miner2.Owner.currentMinerCount++;
+
+
 
         //Cost'a eriþ
         //GetComponent<Lord>().AddGold(selectedSoldier.GetComponent<SoldierCombat>().soldierSO);

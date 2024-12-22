@@ -10,15 +10,6 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] private int sceneIndex;
 
-    [Header("FADE")]
-    [SerializeField]
-    private Image blackFade;
-    [SerializeField]
-    private float fadeDuration = .5f;
-    [SerializeField]
-    private bool fadeEnable = true;
-
-    private bool fadeStart = false;
 
 
     private void Start()
@@ -34,31 +25,12 @@ public class MainMenuManager : MonoBehaviour
 
     void OnStartButtonClicked()
     {
-        blackFade.gameObject.SetActive(true);
-        fadeStart = true;
+        LoadScene(sceneIndex);
     }
 
     void OnExitButtonClicked()
     {
         Application.Quit();
-    }
-
-
-    private void Update()
-    {
-        if (fadeStart)
-        {
-            if (blackFade.color.a >= 1f)
-            {
-                LoadScene(sceneIndex);
-            }
-            else
-            {
-                Color fadeColor = blackFade.color;
-                fadeColor.a += (Time.deltaTime / fadeDuration);
-                blackFade.color = fadeColor;
-            }
-        }
     }
 
 }
