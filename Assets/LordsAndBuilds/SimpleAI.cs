@@ -18,11 +18,12 @@ public class SimpleAI : MonoBehaviour
     public GameObject miner;
 
     [Header("Spawn Points")]
-    public Transform minerPoint;
+    public List<Transform> minerSpawns;
     public List<Transform> enemySpawns;
 
     public GameObject[] soldiers;
 
+    public GameObject tempMiner;
 
     private float decisionInterval = 5f; // Karar verme aralýðý (5 saniye)
     private float lastDecisionTime = 0f; // Son karar zamaný
@@ -97,20 +98,23 @@ public class SimpleAI : MonoBehaviour
     void ProduceMiner()
     {
 
-        if (miner == null || minerPoint == null || !hasEnoughSourceForMiner())
-        {
-            print("belkide madenci için paran yoktur he?_");
-            return; // Eðer madenci prefabý ya da spawn noktasý eksikse çýk.
+        if (minerSpawns.Count == 0)
+            return; // Eðer spawn noktasý yoksa çýk.
 
-        }
+        // Rastgele bir spawn noktasý seç
+        Transform spawnPoint = minerSpawns[Random.Range(0, minerSpawns.Count)];
 
-        // Madenciyi spawn et
-        Instantiate(miner, minerPoint.position, minerPoint.rotation);
+        // Askeri spawn et
+        tempMiner = Instantiate(miner, spawnPoint.position, spawnPoint.rotation);
+        tempMiner.GetComponent<Miner>().SpawnPoint = spawnPoint.position;
 
-        // Madenci sayýsýný güncelle (Lord scriptine baðlý)
-        GetComponent<Lord>().currentMinerCount++;
+        //Cost'a eriþ
+        //GetComponent<Lord>().AddGold(selectedSoldier.GetComponent<SoldierCombat>().soldierSO);
+        GetComponent<Lord>().AddGold(-20);
 
-        print("HOp yeni madenci");
+
+        Debug.Log("Hop yeni asker");
+
     }
 
     bool hasEnoughSourceForMiner()

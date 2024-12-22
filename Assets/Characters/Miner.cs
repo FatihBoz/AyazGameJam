@@ -23,11 +23,12 @@ public class Miner : MonoBehaviour
     public float moveSpeed = 3f;
 
     private NavMeshAgent agent;
-    private Renderer minerRenderer; // Görünmez yapmak için
 
     private MinerSoldier minerSoldier;
 
     AudioSource audioSource;
+
+    public Vector3 SpawnPoint;
 
     [SerializeField] private Vector3 farTeleportPointPosition;
     private static GameObject farTeleportPoint;
@@ -40,7 +41,6 @@ public class Miner : MonoBehaviour
         minerSoldier = GetComponent<MinerSoldier>();
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
-        minerRenderer = GetComponentInChildren<Renderer>();
     }
 
     private void Start()
@@ -64,7 +64,7 @@ public class Miner : MonoBehaviour
 
         if (hasGold)
         {
-            MoveToPos(ownerGameObject.transform.position); // Altýn toplandýysa kuleye dön
+            MoveToPos(SpawnPoint); // Altýn toplandýysa kuleye dön
         }
         else
         {
@@ -103,8 +103,9 @@ public class Miner : MonoBehaviour
 
             StartCoroutine(MineGold());
         }
-        if (other.CompareTag(OwnerTagNameOfCastle) && hasGold)
+        if (other.CompareTag("MinerPoint") && hasGold)
         {
+            print("Miner Reached the Point of retur");
             Owner.AddGold(goldamount); // Toplanan altýnlarý ekle
             UIUpdater.instance.UpdateSource();
 
