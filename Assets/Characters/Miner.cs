@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class Miner : MonoBehaviour
 {
+    [Header("** Mine **")]
     private bool isInMine = false; // Madende mi?
     private float goldPerSecond = 1f; // Her saniye kazanýlan altýn
     private float mineTime = 3f; // Madende bekleme süresi
@@ -13,6 +14,8 @@ public class Miner : MonoBehaviour
     private Transform targetMine; // Hedef maden
     private bool hasGold = false; // Altýn toplandý mý?
 
+
+    [Header("** Other **")]
     private Lord owner;
     private GameObject ownerGameObject;
 
@@ -26,6 +29,10 @@ public class Miner : MonoBehaviour
 
     AudioSource audioSource;
 
+    [SerializeField] private Vector3 farTeleportPointPosition;
+    private static GameObject farTeleportPoint;
+    private Vector3 previousPos;
+
     public Lord Owner { get => owner;}
 
     private void Awake()
@@ -38,6 +45,12 @@ public class Miner : MonoBehaviour
 
     private void Start()
     {
+        if (farTeleportPoint == null)
+        {
+            farTeleportPoint = new GameObject("FarTeleportPoint");
+            farTeleportPoint.transform.position = farTeleportPointPosition;
+        }
+
 
         owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
         ownerGameObject = GameObject.FindWithTag(OwnerTagNameOfCastle);
@@ -84,9 +97,9 @@ public class Miner : MonoBehaviour
     {
         if (other.CompareTag("Mine") && !isInMine)
         {
+            print("tekrar mý giriyon buraya");
             isInMine = true;
-            agent.isStopped = true; // Hareketi durdur
-            minerRenderer.enabled = false; // Görünmez yap
+            agent.enabled = false;
 
             StartCoroutine(MineGold());
         }
@@ -104,13 +117,16 @@ public class Miner : MonoBehaviour
     {
         //audioSource.Play();
         //audioSource.Play();
-        minerSoldier.MakeHealthBarActive(false);
-        yield return new WaitForSeconds(mineTime); // Madende bekle
-        minerSoldier.MakeHealthBarActive(true);
-        isInMine = false;
+        previousPos = transform.position;
+        transform.position = farTeleportPoint.transform.position;
+        yield return new WaitForSeconds(mineTime);
+        transform.position = previousPos;
+        agent.enabled = true;
         hasGold = true;
-        minerRenderer.enabled = true; // Görünür yap
-        agent.isStopped = false; // Hareketi devam ettir
+
+        yield return new WaitForSeconds(.1f);
+        isInMine = false;
+
     }
 
     private void MoveToPos(Vector3 pos)
@@ -125,13 +141,4 @@ public class Miner : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 
-    public void MakeHealthBarInactive()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void MakeHealthBarActive()
-    {
-        throw new System.NotImplementedException();
-    }
 }

@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OwnerTagNameOfCastle: EnemyCastle
   moveSpeed: 3
+  farTeleportPointPosition: {x: 0, y: 0, z: 100}
 --- !u!195 &6541352452685876026
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -287,7 +288,7 @@ MonoBehaviour:
   bloodEffect: {fileID: 440273542176214765, guid: e7a1cd905d35cf34581aa85456fdb55b,
     type: 3}
   effectDestroyTime: 1
-  effectOffSet: {x: 0, y: 0.5, z: 0}
+  effectOffSet: {x: 0, y: 0, z: 0}
   owner: {fileID: 0}
   Cost: 50
   meshRenderer: {fileID: 9011821147723049566}

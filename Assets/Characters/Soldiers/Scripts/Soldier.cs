@@ -10,14 +10,17 @@ public abstract class Soldier : MonoBehaviour
     private bool rangeIsActive;
     protected Soldier soldierToTransform;
     protected bool canRevive = true;
-    private SoldierTranformation tranformation;
+    private EnemySoldierTranformation tranformation;
+
+    [SerializeField] protected SoldierSide soldierSide;
 
 
     protected virtual void Awake()
     {
-        tranformation = GetComponent<SoldierTranformation>();
-        if (transform != null)
+        tranformation = GetComponent<EnemySoldierTranformation>();
+        if (transform != null && soldierSide == SoldierSide.Enemy)
         {
+            print("buraya girmemesi lazým:"+soldierSide.ToString());
             soldierToTransform = tranformation.GetRandomSoldierToTransform();
         }
 
@@ -56,4 +59,15 @@ public abstract class Soldier : MonoBehaviour
 
     public float SoldierCost => soldierSO.Cost;
 
+    public SoldierSide SoldierSide => soldierSide;
+
+    public Sprite NextSoldierSprite => soldierSO.NextImageSprite;
+
+}
+
+
+public enum SoldierSide
+{
+    Ally,
+    Enemy
 }

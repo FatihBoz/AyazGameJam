@@ -24,6 +24,5 @@ public class HealthBarUI : MonoBehaviour
     public void TakeDamage(float currentHp)
     {
         healthSlider.value = currentHp;
-        print("current hp :"+ currentHp);
     }
 }

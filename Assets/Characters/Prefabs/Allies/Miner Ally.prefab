@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OwnerTagNameOfCastle: AllyCastle
   moveSpeed: 3
+  farTeleportPointPosition: {x: 0, y: 0, z: 100}
 --- !u!195 &9098467680294176551
 NavMeshAgent:
   m_ObjectHideFlags: 0

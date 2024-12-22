@@ -469,7 +469,6 @@ GameObject:
   - component: {fileID: 6226079598238183192}
   - component: {fileID: 5511092362366080537}
   - component: {fileID: 1840411552988654520}
-  - component: {fileID: 7142946453800375123}
   - component: {fileID: 2352249086667299998}
   - component: {fileID: -6732350916428596581}
   - component: {fileID: 4343576018187392379}
@@ -551,6 +550,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rangeIndicatorExpandRate: 0.3
+  soldierSide: 0
   healthBarPrefab: {fileID: 2465280660251491880, guid: d081efb1f541a124b9974a2a874278f1,
     type: 3}
   healthBarOffset: {x: 0, y: 3.1, z: 0}
@@ -614,21 +614,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7142946453800375123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4925433174758859952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbfb5b6a6515e245aba3dc039a1600b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldiersToTransform:
-  - {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63, type: 3}
-  - {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca, type: 3}
 --- !u!82 &2352249086667299998
 AudioSource:
   m_ObjectHideFlags: 0
@@ -748,7 +733,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -1248,6 +1233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangePrefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 370109590489830637, guid: 66dddc245480f154da9c7a52c4938d20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8627958938954434197, guid: 66dddc245480f154da9c7a52c4938d20,
         type: 3}

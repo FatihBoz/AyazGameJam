@@ -74,6 +74,7 @@ public class MinerSoldier : MonoBehaviour, ICombat
 
         if (currentHp <= 0)
         {
+            Destroy(Instantiate(dyingEffect, transform.position + effectOffSet, dyingEffect.transform.rotation), effectDestroyTime);
             animator.SetTrigger(AnimationKey.Die);
             Destroy(gameObject, 1f);
         }
