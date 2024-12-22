@@ -97,8 +97,8 @@ public class Miner : MonoBehaviour
     {
         if (other.CompareTag("Mine") && !isInMine)
         {
+            print("tekrar mý giriyon buraya");
             isInMine = true;
-            agent.isStopped = true; // Hareketi durdur
             agent.enabled = false;
 
             StartCoroutine(MineGold());
@@ -117,26 +117,17 @@ public class Miner : MonoBehaviour
     {
         //audioSource.Play();
         //audioSource.Play();
-        //minerSoldier.MakeHealthBarActive(false);
         previousPos = transform.position;
         transform.position = farTeleportPoint.transform.position;
-        yield return new WaitForSeconds(mineTime); // Madende bekle
-        ExitFromMine();
-
-
-    }
-
-    void ExitFromMine()
-    {
+        yield return new WaitForSeconds(mineTime);
         transform.position = previousPos;
-        //minerSoldier.MakeHealthBarActive(true);
         agent.enabled = true;
-        isInMine = false;
         hasGold = true;
-        
-        agent.isStopped = false;
-    }
 
+        yield return new WaitForSeconds(.1f);
+        isInMine = false;
+
+    }
 
     private void MoveToPos(Vector3 pos)
     {
