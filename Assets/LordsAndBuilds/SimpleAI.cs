@@ -108,6 +108,8 @@ public class SimpleAI : MonoBehaviour
         tempMiner = Instantiate(miner, spawnPoint.position, spawnPoint.rotation);
         tempMiner.GetComponent<Miner>().SpawnPoint = spawnPoint.position;
 
+        tempMiner.GetComponent<Miner>().Owner.GetComponent<Lord>().currentMinerCount++;
+
         //Cost'a eriþ
         //GetComponent<Lord>().AddGold(selectedSoldier.GetComponent<SoldierCombat>().soldierSO);
         GetComponent<Lord>().AddGold(-20);

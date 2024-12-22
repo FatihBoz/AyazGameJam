@@ -18,11 +18,8 @@ public class MinerSoldier : MonoBehaviour, ICombat
 
     [Header("*** OTHER ***")]
 
-    public Lord owner;
     public float Cost = 50f;
     public MeshRenderer meshRenderer;
-
-    public string OwnerTagNameOfCastle;
 
     private float currentHp;
     private Animator animator;
@@ -30,7 +27,6 @@ public class MinerSoldier : MonoBehaviour, ICombat
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        owner = GameObject.FindWithTag(OwnerTagNameOfCastle).GetComponent<Lord>();
     }
 
     private void Start()
