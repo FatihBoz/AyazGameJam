@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damage = 10f; // Merminin vereceði hasar miktarý
-    float speed = 20;  // Merminin hýzý
+    public float speed = 30;  // Merminin hýzý
 
     Rigidbody rb;
 
@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Hop mermi deðdi");
+        Debug.Log("collision");
         // Eðer mermi allyChar tag'ine sahip bir karaktere çarparsa
         if (collision.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
         {
@@ -31,15 +31,16 @@ public class Projectile : MonoBehaviour
             {
                 enemy.TakeDamage(8);
             }
-            Destroy(gameObject);
+            
 
         }
 
-
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        print("trigger");
         if (other.gameObject.layer == LayerMask.NameToLayer(enemyCastleLayer))
         {
 
@@ -50,5 +51,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
 
         }
+
+
     }
 }

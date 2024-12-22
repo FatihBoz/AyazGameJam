@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6596179614596359357}
   - component: {fileID: 215024515204982044}
   - component: {fileID: 4157826923229903839}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AllyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,5 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  speed: 30
   enemyCastleLayer: RedSide
   enemyLayer: EnemyChar

@@ -22,8 +22,8 @@ TagManager:
   - RedSide
   - BlueSide
   - 
-  - 
-  - NonCollision
+  - AllyProjectile
+  - EnemyProjectile
   - 
   - 
   - 
