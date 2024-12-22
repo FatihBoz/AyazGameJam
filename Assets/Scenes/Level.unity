@@ -1150,6 +1150,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4756605470291110924, guid: 731cc8aaaa71de24ea27aeb5588a0740,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 96af5e28fd231e549b410d2ab5a63a80,
+        type: 3}
+    - target: {fileID: 4756605470291110924, guid: 731cc8aaaa71de24ea27aeb5588a0740,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.754717
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756605470291110924, guid: 731cc8aaaa71de24ea27aeb5588a0740,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.31647047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756605470291110924, guid: 731cc8aaaa71de24ea27aeb5588a0740,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.25204694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232563556270624923, guid: 731cc8aaaa71de24ea27aeb5588a0740,
+        type: 3}
+      propertyPath: Prefab
+      value: 
+      objectReference: {fileID: 937742374431330084, guid: 9270c5c625785e14191c45ab697b2a17,
+        type: 3}
     - target: {fileID: 5705282835621598793, guid: 731cc8aaaa71de24ea27aeb5588a0740,
         type: 3}
       propertyPath: m_Name
@@ -1700,6 +1727,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089349630}
   m_Mesh: {fileID: 7411784650183359975, guid: e5fbda7ace5d4a94ebb74d47a1c3e87d, type: 3}
+--- !u!114 &1126002374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7718487814465538934, guid: 93681d4d380a18e4caa3383b7fe7702f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1471403246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1129720168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,6 +1923,18 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 540}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1224928146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1653094204346472474, guid: 93681d4d380a18e4caa3383b7fe7702f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1471403246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1250474934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,6 +2058,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 566436336}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370613123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8003077153851532355, guid: 93681d4d380a18e4caa3383b7fe7702f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1471403246}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1399428388
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,6 +2228,28 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 644404663}
     m_Modifications:
+    - target: {fileID: 1052262267036319356, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: nextSoldierImage
+      value: 
+      objectReference: {fileID: 1370613123}
+    - target: {fileID: 1052262267036319356, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052262267036319356, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca,
+        type: 3}
+    - target: {fileID: 1052262267036319356, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23,
+        type: 3}
     - target: {fileID: 2271499239973535280, guid: 93681d4d380a18e4caa3383b7fe7702f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2190,6 +2275,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoldierCards
       objectReference: {fileID: 0}
+    - target: {fileID: 4036568399432319206, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: nextSoldierImage
+      value: 
+      objectReference: {fileID: 1126002374}
+    - target: {fileID: 4036568399432319206, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4036568399432319206, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63,
+        type: 3}
+    - target: {fileID: 4036568399432319206, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 6226079598238183192, guid: f4922383d6bf3834baee4e77e09a5c23,
+        type: 3}
+    - target: {fileID: 5398511001999197912, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: nextSoldierImage
+      value: 
+      objectReference: {fileID: 1224928146}
+    - target: {fileID: 5398511001999197912, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398511001999197912, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 1624207368319190452, guid: e252582846741f74182a2cffc50cea63,
+        type: 3}
+    - target: {fileID: 5398511001999197912, guid: 93681d4d380a18e4caa3383b7fe7702f,
+        type: 3}
+      propertyPath: soldiersToTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 1223030926720914412, guid: a3b0f0b248d53f849b41bafec88aa3ca,
+        type: 3}
     - target: {fileID: 6108838463601760198, guid: 93681d4d380a18e4caa3383b7fe7702f,
         type: 3}
       propertyPath: m_Pivot.x

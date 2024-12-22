@@ -7,17 +7,6 @@ public class RangedSoldier : MonoBehaviour
     public float shootRate = 1f; // Atýþ hýzý (saniye baþýna atýþ sayýsý)
     private float nextShootTime = 0f; // Bir sonraki atýþ zamaný
 
-    void Update()
-    {
-        
-        //// Eðer þu anki zaman, bir sonraki atýþ zamanýndan büyükse, atýþ yapabiliriz
-        //if (Time.time >= nextShootTime)
-        //{
-        //    Shoot(shootPoint);
-        //}
-        
-    }
-
     public void Shoot(Transform target)
     {
         // Hedefin yönünü hesapla
