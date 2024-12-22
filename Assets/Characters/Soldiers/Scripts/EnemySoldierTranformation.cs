@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierTranformation : MonoBehaviour
+public class EnemySoldierTranformation : MonoBehaviour
 {
     [SerializeField] private List<Soldier> soldiersToTransform;
 

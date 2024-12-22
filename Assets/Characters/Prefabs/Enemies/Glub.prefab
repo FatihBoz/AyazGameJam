@@ -756,6 +756,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   rangeIndicatorExpandRate: 0
+  soldierSide: 1
   healthBarPrefab: {fileID: 4516639316002204741, guid: f80f96c972b5e3041bbfbe1fbce8869b,
     type: 3}
   healthBarOffset: {x: 0, y: 3.1, z: 0}
@@ -820,7 +821,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0

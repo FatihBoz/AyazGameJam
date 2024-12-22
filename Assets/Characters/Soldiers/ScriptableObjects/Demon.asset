@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 3}
   attackDamage: 10
   attackSpeed: 5
-  range: 3
+  range: 3.5
   moveSpeed: 10
   detectionRange: 4
   maxHp: 100

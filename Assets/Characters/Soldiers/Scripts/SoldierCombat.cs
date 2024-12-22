@@ -38,13 +38,9 @@ public class SoldierCombat : Soldier , ICombat
     private ISoldierAnimation anim;
     AudioSource audioSource;
 
-    private NavMeshObstacle obstacle;
-
     protected override void Awake()
     {
         base.Awake();
-        obstacle = GetComponent<NavMeshObstacle>();
-
         InstantiateHealthBar();
         currentHp = soldierSO.MaxHp;
         anim = GetComponent<ISoldierAnimation>();
@@ -296,6 +292,11 @@ public class SoldierCombat : Soldier , ICombat
         {
             audioSource.Play();
         }
+    }
+
+    public void SetNextSoldierToTransform(Soldier soldier)
+    {
+        soldierToTransform = soldier;
     }
 
     public void ChangeMaterial(Material material)

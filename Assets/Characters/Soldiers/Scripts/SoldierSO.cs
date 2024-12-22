@@ -23,5 +23,6 @@ public class SoldierSO : ScriptableObject
     public float DetectionRange { get => detectionRange; }
     public Soldier SoldierPrefab { get => soldierPrefab;}
     public float MaxHp { get => maxHp;}
-    public Sprite NextImageSprite { get => nextImageSprite; }
+    public Sprite NextImageSprite { get => nextImageSprite; }   
 }
+
