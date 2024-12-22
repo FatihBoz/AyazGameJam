@@ -272,13 +272,9 @@ public class SoldierCombat : Soldier , ICombat
             if (gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
             {
                 RangedSoldier.Shoot(currentTarget);
-
-            }
-            if (currentTarget.TryGetComponent<ICombat>(out var enemy))
-            {
-                enemy.TakeDamage(soldierSO.AttackDamage);
             }
         }
+
         else if (currentTarget.TryGetComponent<ICombat>(out var enemy))
         {
             enemy.TakeDamage(soldierSO.AttackDamage);

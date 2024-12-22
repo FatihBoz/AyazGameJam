@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damage = 10f; // Merminin vereceði hasar miktarý
-    float speed = 25;  // Merminin hýzý
+    float speed = 20;  // Merminin hýzý
 
     Rigidbody rb;
 
@@ -25,8 +25,11 @@ public class Projectile : MonoBehaviour
         // Eðer mermi allyChar tag'ine sahip bir karaktere çarparsa
         if (collision.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
         {
-            print("Enemyyyy");
-            //
+
+            if (collision.gameObject.transform.TryGetComponent<ICombat>(out var enemy))
+            {
+                enemy.TakeDamage(8);
+            }
         }
         Destroy(gameObject);
 
