@@ -76,7 +76,7 @@ public class MinerSoldier : MonoBehaviour, ICombat
         {
             Destroy(Instantiate(dyingEffect, transform.position + effectOffSet, dyingEffect.transform.rotation), effectDestroyTime);
             animator.SetTrigger(AnimationKey.Die);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
         }
     }
 
