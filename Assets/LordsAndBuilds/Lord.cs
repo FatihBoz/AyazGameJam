@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Lord : MonoBehaviour, ICombat
 {
+    public static Action<Lord> OnLordDestroyed;
+
     [Header("VFX")]
     [SerializeField] private GameObject stoneHitEffect;
 
@@ -37,5 +40,11 @@ public class Lord : MonoBehaviour, ICombat
         currentHp -= damageAmount;
         healthBarUI.TakeDamage(currentHp);
         Destroy(Instantiate(stoneHitEffect, transform.position, Quaternion.identity), .75f);
+
+        if (currentHp <= 0)
+        {
+            OnLordDestroyed?.Invoke(this);
+            Destroy(gameObject);
+        }
     }
 }
