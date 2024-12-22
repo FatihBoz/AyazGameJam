@@ -68,7 +68,11 @@ public class Miner : MonoBehaviour
         }
         else
         {
-            FindClosestMine();
+            if(targetMine == null)
+            {
+                FindClosestMine();
+
+            }
 
             if (targetMine != null && agent.isActiveAndEnabled)
             {
@@ -79,6 +83,8 @@ public class Miner : MonoBehaviour
 
     private void FindClosestMine()
     {
+
+
         Collider[] hits = Physics.OverlapSphere(transform.position, detectionRadius);
 
         foreach (Collider hit in hits)
