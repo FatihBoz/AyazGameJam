@@ -15,6 +15,7 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     protected bool canPlace = true;
     private MinerSoldier placingMinerPrefab;
 
+    public GameObject allyCastle;
 
     protected virtual void Awake()
     {
@@ -66,6 +67,8 @@ public class MinerCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (canPlace)
         {
             MinerSoldier soldier = Instantiate(minerPrefab, placingMinerPrefab.transform.position, Quaternion.identity);
+
+            soldier.gameObject.GetComponent<Miner>().SpawnPoint = allyCastle.transform.position;
 
             soldier.owner.GetComponent<Lord>().AddGold(-soldier.Cost);
             UIUpdater.instance.UpdateSource();
