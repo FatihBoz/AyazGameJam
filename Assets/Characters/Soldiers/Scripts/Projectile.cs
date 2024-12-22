@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 
     Rigidbody rb;
 
+    public string enemyCastleLayer;
     public string enemyLayer;
     
     void Start()
@@ -30,9 +31,24 @@ public class Projectile : MonoBehaviour
             {
                 enemy.TakeDamage(8);
             }
+            Destroy(gameObject);
+
         }
-        Destroy(gameObject);
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer(enemyCastleLayer))
+        {
+
+            if (other.gameObject.transform.TryGetComponent<ICombat>(out var enemy))
+            {
+                enemy.TakeDamage(8);
+            }
+            Destroy(gameObject);
+
+        }
     }
 }

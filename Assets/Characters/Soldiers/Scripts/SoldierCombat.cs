@@ -56,9 +56,13 @@ public class SoldierCombat : Soldier , ICombat
         }
 
 
-        //audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
-        //audioSource.clip = soldierSO.attackAudioClip;
+        if(soldierSO.attackAudioClip != null)
+        {
+            audioSource.clip = soldierSO.attackAudioClip;
+
+        }
 
     }
 
@@ -272,6 +276,7 @@ public class SoldierCombat : Soldier , ICombat
             if (gameObject.TryGetComponent<RangedSoldier>(out var RangedSoldier))
             {
                 RangedSoldier.Shoot(currentTarget);
+                audioSource.Play();
             }
         }
 
